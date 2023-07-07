@@ -1,7 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { AppRoutes, TokenNames } from '@shared/constants';
+
+import { useAppDispatch, useAppSelector } from '@shared/lib';
+
+import { getCurrentUserAsync } from '@features/login-form/model/auth/actions';
+import { selectIsAuthorized } from '@features/login-form/model/auth/selectors';
 
 import { DashboardWrapper } from '@widgets/dashboard-wrapper';
 
@@ -10,12 +15,15 @@ import { Authentication, Requests, Users } from '@pages';
 import { ProtectedRoute } from './ProtectedRoute';
 
 export const App = () => {
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const accessToken = localStorage.getItem(TokenNames.ACCESS_TOKEN);
+  const dispatch = useAppDispatch();
+  const isAuthorized = useAppSelector(selectIsAuthorized);
 
   useEffect(() => {
-    setIsAuthorized(!!accessToken);
-  }, [accessToken, isAuthorized]);
+    if (accessToken) {
+      dispatch(getCurrentUserAsync());
+    }
+  }, [accessToken]);
 
   return (
     <Routes>

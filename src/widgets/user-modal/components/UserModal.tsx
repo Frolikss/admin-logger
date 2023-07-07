@@ -80,7 +80,10 @@ export const UserModal: FC<Props> = ({ isOpened, setIsOpened, selectedUser, setS
   }, [selectedUser]);
 
   return (
-    <Modal header="Add new user" isOpened={isOpened} onCloseModal={onCloseModal}>
+    <Modal
+      header={selectedUser ? 'Edit user' : 'Add new user'}
+      isOpened={isOpened}
+      onCloseModal={onCloseModal}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
           <div key={name} className="flex flex-col gap-2">
@@ -89,8 +92,8 @@ export const UserModal: FC<Props> = ({ isOpened, setIsOpened, selectedUser, setS
             <p>{errors[name]?.message}</p>
           </div>
         ))}
-        <Button variant={ButtonVariants.UTILITY} onClick={onCloseModal}>
-          Create new user
+        <Button variant={ButtonVariants.UTILITY} className="flex-1 w-full" onClick={onCloseModal}>
+          {selectedUser ? 'Edit user' : 'Create new user'}
         </Button>
       </form>
     </Modal>

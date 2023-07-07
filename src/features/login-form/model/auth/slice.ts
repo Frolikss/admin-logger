@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { SliceNames } from '@shared/constants';
 
 import { AuthState } from '../../types/auth.interfaces';
-import { sendLoginReducer } from './reducers';
+import { getCurrentUserReducer, sendLoginReducer } from './reducers';
 
 const initialState: AuthState = {
   isLoading: false,
@@ -11,11 +11,12 @@ const initialState: AuthState = {
 };
 
 const slice = createSlice({
-  name: SliceNames.USERS,
+  name: SliceNames.AUTH,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     sendLoginReducer(builder);
+    getCurrentUserReducer(builder);
   }
 });
 

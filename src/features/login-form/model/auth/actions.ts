@@ -13,3 +13,8 @@ export const sendLoginAsync = createAsyncThunk(
     return data;
   }
 );
+
+export const getCurrentUserAsync = createAsyncThunk(`${SliceNames.AUTH}/GET_SELF`, async () => {
+  const { data } = await authApi.getSelf();
+  return data;
+});

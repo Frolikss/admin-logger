@@ -29,12 +29,7 @@ export const RequestModal: FC<Props> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors }
-  } = useForm<RequestFieldsValues>();
+  const { handleSubmit, control, reset } = useForm<RequestFieldsValues>();
 
   const onCloseModal = () => {
     setSelectedRequest(undefined);
@@ -53,7 +48,7 @@ export const RequestModal: FC<Props> = ({
   }, [selectedRequest]);
 
   return (
-    <Modal header="Add new user" isOpened={isOpened} onCloseModal={onCloseModal}>
+    <Modal header="Request" isOpened={isOpened} onCloseModal={onCloseModal}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="status"
@@ -68,7 +63,9 @@ export const RequestModal: FC<Props> = ({
           )}
           rules={{ required: true }}
         />
-        <Button variant={ButtonVariants.UTILITY}>Submit</Button>
+        <Button variant={ButtonVariants.UTILITY} className="flex-1 w-full">
+          Submit
+        </Button>
       </form>
     </Modal>
   );
