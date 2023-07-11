@@ -1,4 +1,5 @@
 import { EMAIL_PATTERN, FieldErrors } from '@shared/constants';
+import { PHONE_PATTERN } from '@shared/constants/fields-patterns';
 
 import { UserFieldsNames } from './fields-names';
 
@@ -28,8 +29,8 @@ export const USER_FIELDS_CONTENT = [
     type: 'tel',
     options: {
       required: FieldErrors.REQUIRED,
-      minLength: {
-        value: 12,
+      pattern: {
+        value: PHONE_PATTERN,
         message: FieldErrors.PHONE
       }
     }

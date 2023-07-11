@@ -1,5 +1,9 @@
+import { StatusNames } from '@shared/constants';
+
 export interface User {
   id: string;
+  avatar?: string;
+  status: StatusNames;
   firstName: string;
   lastName: string;
   email: string;

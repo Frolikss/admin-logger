@@ -5,3 +5,20 @@
 .rc-pagination-item {
     @apply hover:bg-white rounded-full transition-all
 }
+
+.rc-pagination-item-active {
+    @apply bg-white rounded-lg;
+}
+
+.rbc-event {
+    @apply bg-violet-600;
+}
+
+.rbc-show-more {
+    @apply text-violet-600;
+}
+
+.rbc-today, .css-1n6sfyn-MenuList {
+    @apply bg-violet-100 rounded-md;
+}
+

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, ButtonVariants } from '@shared/components/button';
+import { Button } from '@shared/components/button';
 import { Input } from '@shared/components/input';
 import { useAppDispatch } from '@shared/lib';
 
@@ -34,13 +34,11 @@ export const LoginForm = () => {
               {...props}
               className="flex-1 p-2 border-2 rounded-md"
             />
-            <p>{errors[name]?.message}</p>
+            <p className="text-red-600">{errors[name]?.message}</p>
           </Fragment>
         );
       })}
-      <Button variant={ButtonVariants.UTILITY} className="p-2">
-        Sign In
-      </Button>
+      <Button>Sign In</Button>
     </form>
   );
 };

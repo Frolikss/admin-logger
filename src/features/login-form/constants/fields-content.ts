@@ -28,6 +28,7 @@ export const LOGIN_FIELDS_CONTENT = [
     name: LoginFieldsNames.PASSWORD,
     placeholder: 'Enter your password',
     component: Input,
+    type: 'password',
     label: 'Password',
     options: {
       required: FieldErrors.REQUIRED,

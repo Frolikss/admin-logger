@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { SliceNames } from '@shared/constants';
 
 import { RequestsState } from '../../types/requests.interfaces';
-import { getRequestsReducer, updateRequestsReducer } from './reducers';
+import { getRequestReducer, getRequestsReducer, updateRequestsReducer } from './reducers';
 
 const initialState: RequestsState = {
   isLoading: false
@@ -16,6 +16,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     getRequestsReducer(builder);
     updateRequestsReducer(builder);
+    getRequestReducer(builder);
   }
 });
 

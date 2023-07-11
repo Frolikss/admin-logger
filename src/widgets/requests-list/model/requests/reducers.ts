@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 
-import { RequestData, RequestsState } from '../../types/requests.interfaces';
-import { getRequestsAsync, updateRequestAsync } from './actions';
+import { Request, RequestData, RequestsState } from '../../types/requests.interfaces';
+import { getRequestAsync, getRequestsAsync, updateRequestAsync } from './actions';
 
 export const getRequestsReducer = (builder: ActionReducerMapBuilder<RequestsState>) => {
   builder
@@ -27,5 +27,19 @@ export const updateRequestsReducer = (builder: ActionReducerMapBuilder<RequestsS
     })
     .addCase(updateRequestAsync.fulfilled, (state) => {
       state.isLoading = false;
+    });
+};
+
+export const getRequestReducer = (builder: ActionReducerMapBuilder<RequestsState>) => {
+  builder
+    .addCase(getRequestAsync.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(getRequestAsync.rejected, (state) => {
+      state.isLoading = false;
+    })
+    .addCase(getRequestAsync.fulfilled, (state, { payload }: PayloadAction<Request>) => {
+      state.isLoading = false;
+      state.selectedRequest = payload;
     });
 };

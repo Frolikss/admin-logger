@@ -1,19 +1,16 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import moment from 'moment/moment';
+import { Link } from 'react-router-dom';
+
+import { AppRoutes } from '@shared/constants';
 
 import { User } from '@shared/types';
 
-import { Button } from '@shared/components/button';
-
-import { ReactComponent as DeleteIcon } from '@svg/add.svg';
 import { ReactComponent as EditIcon } from '@svg/edit.svg';
 
 const columnHelper = createColumnHelper<User>();
 
-export const getColumns = (
-  handleDeleteClick: (index: number) => void,
-  handleUpdateClick: (index: number) => void
-) => [
+export const getColumns = (handleUpdateClick: (index: number) => string) => [
   columnHelper.accessor('firstName', {
     header: 'First Name',
     cell: (info) => info.getValue()
@@ -50,12 +47,11 @@ export const getColumns = (
     header: 'Edit',
     cell: (props) => (
       <div className="flex gap-2 items-center">
-        <Button onClick={() => handleDeleteClick(props.row.index)}>
-          <DeleteIcon className="rotate-45 fill-red w-5" />
-        </Button>
-        <Button onClick={() => handleUpdateClick(props.row.index)}>
+        <Link
+          to={`${AppRoutes.USER}/?id=${handleUpdateClick(props.row.index)}`}
+          className="p-2 hover:bg-gray-200 transition-all rounded-full">
           <EditIcon className="fill-green w-5" />
-        </Button>
+        </Link>
       </div>
     )
   })

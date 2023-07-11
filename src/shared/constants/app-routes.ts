@@ -1,5 +1,7 @@
 export enum AppRoutes {
   USERS = '/',
-  REQUESTS = 'requests',
-  AUTH = '/authentication'
+  REQUESTS = '/requests',
+  REQUEST = '/request',
+  AUTH = '/authentication',
+  USER = '/user'
 }

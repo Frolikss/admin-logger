@@ -5,8 +5,9 @@ import { SliceNames } from '@shared/constants';
 import { UsersState } from '../../types/users.interfaces';
 import {
   createUserReducer,
-  deleteUserReducer,
+  getSelectedUserReducer,
   getUsersReducer,
+  suspendUserReducer,
   updateUserReducer
 } from './reducers';
 
@@ -21,8 +22,9 @@ const slice = createSlice({
   extraReducers: (builder) => {
     createUserReducer(builder);
     getUsersReducer(builder);
-    deleteUserReducer(builder);
+    suspendUserReducer(builder);
     updateUserReducer(builder);
+    getSelectedUserReducer(builder);
   }
 });
 

@@ -3,6 +3,7 @@ import { User } from '@shared/types';
 export interface RequestsState {
   isLoading: boolean;
   requests?: RequestData;
+  selectedRequest?: Request;
 }
 
 export interface RequestData {

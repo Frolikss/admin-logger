@@ -2,7 +2,7 @@ import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 
 import { User } from '@shared/types';
 
-import { getCurrentUserAsync, sendLoginAsync } from '@features/login-form/model/auth/actions';
+import { getUserAsync, sendLoginAsync } from '@features/login-form/model/auth/actions';
 
 import { AuthState } from '../../types/auth.interfaces';
 
@@ -20,16 +20,16 @@ export const sendLoginReducer = (builder: ActionReducerMapBuilder<AuthState>) =>
     });
 };
 
-export const getCurrentUserReducer = (builder: ActionReducerMapBuilder<AuthState>) => {
+export const getUserReducer = (builder: ActionReducerMapBuilder<AuthState>) => {
   builder
-    .addCase(getCurrentUserAsync.pending, (state) => {
+    .addCase(getUserAsync.pending, (state) => {
       state.isLoading = true;
     })
-    .addCase(getCurrentUserAsync.rejected, (state) => {
+    .addCase(getUserAsync.rejected, (state) => {
       state.isLoading = true;
       state.isAuthorized = false;
     })
-    .addCase(getCurrentUserAsync.fulfilled, (state, { payload }: PayloadAction<User>) => {
+    .addCase(getUserAsync.fulfilled, (state, { payload }: PayloadAction<User>) => {
       state.isAuthorized = true;
       state.currentUser = payload;
     });

@@ -5,12 +5,11 @@ import { AppRoutes, TokenNames } from '@shared/constants';
 
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
-import { getCurrentUserAsync } from '@features/login-form/model/auth/actions';
-import { selectIsAuthorized } from '@features/login-form/model/auth/selectors';
+import { getUserAsync, selectIsAuthorized } from '@features/login-form';
 
 import { DashboardWrapper } from '@widgets/dashboard-wrapper';
 
-import { Authentication, Requests, Users } from '@pages';
+import { Authentication, EditRequest, EditUser, Requests, Users } from '@pages';
 
 import { ProtectedRoute } from './ProtectedRoute';
 
@@ -21,7 +20,7 @@ export const App = () => {
 
   useEffect(() => {
     if (accessToken) {
-      dispatch(getCurrentUserAsync());
+      dispatch(getUserAsync());
     }
   }, [accessToken]);
 
@@ -50,6 +49,24 @@ export const App = () => {
           }
         />
       </Route>
+      <Route
+        key={AppRoutes.USER}
+        path={AppRoutes.USER}
+        element={
+          <DashboardWrapper>
+            <EditUser />
+          </DashboardWrapper>
+        }
+      />
+      <Route
+        key={AppRoutes.REQUEST}
+        path={AppRoutes.REQUEST}
+        element={
+          <DashboardWrapper>
+            <EditRequest />
+          </DashboardWrapper>
+        }
+      />
     </Routes>
   );
 };

@@ -16,9 +16,9 @@ export const Button: FC<Props> = ({
   return (
     <button
       className={cn(
+        className,
         BUTTON_STYLES[variant],
-        'transition-all flex gap-1 items-center justify-center shrink-0',
-        className
+        'rounded-md border-2 p-2 transition-all flex gap-1 items-center justify-center shrink-0 disabled:opacity-30 disabled:select-none'
       )}
       {...props}>
       {children}

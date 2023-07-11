@@ -1,22 +1,16 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { Dispatch, FC, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-import { User } from '@shared/types';
 
 import { ListPagination } from '@shared/components/list-pagination/ListPagination';
 import { DashboardTable } from '@shared/components/table';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
-import { deleteUsersAsync, getUsersAsync, selectUsers } from '@widgets/users-list';
+import { getUsersAsync, selectUsers } from '@widgets/users-list';
 
 import { getColumns } from '../constants/columns-content';
 
-interface Props {
-  setSelectedUser: Dispatch<SetStateAction<Partial<User> | undefined>>;
-}
-
-export const UsersList: FC<Props> = ({ setSelectedUser }) => {
+export const UsersList = () => {
   const dispatch = useAppDispatch();
   const usersData = useAppSelector(selectUsers);
 
@@ -24,10 +18,7 @@ export const UsersList: FC<Props> = ({ setSelectedUser }) => {
 
   const table = useReactTable({
     data: usersData?.users ?? [],
-    columns: getColumns(
-      (index) => usersData?.users && dispatch(deleteUsersAsync(usersData?.users[index].id)),
-      (index) => setSelectedUser(usersData?.users && usersData?.users[index])
-    ),
+    columns: getColumns((index) => usersData?.users[index].id ?? ''),
     getCoreRowModel: getCoreRowModel()
   });
 
@@ -40,7 +31,7 @@ export const UsersList: FC<Props> = ({ setSelectedUser }) => {
     );
   }, [searchParams]);
 
-  if (!usersData?.users) return null;
+  if (!usersData?.users) return <p>No users</p>;
   return (
     <div className="flex flex-col items-center">
       <DashboardTable table={table} />

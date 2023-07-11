@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 
-import { QueryParams } from '@shared/types';
+import { QueryParams, User } from '@shared/types';
 
 import { dashboardApiClient } from '@shared/config';
 
@@ -20,16 +20,24 @@ class DashboardUsersApi {
     );
   }
 
-  deleteUser(payload: string, config?: AxiosRequestConfig) {
+  deleteUser(payload: User, config?: AxiosRequestConfig) {
     return dashboardApiClient.patch(
-      `${this.url}/change-status/${payload}`,
-      { status: 'inactive' },
+      `${this.url}/change-status/${payload.id}`,
+      { status: payload.status },
       config
     );
   }
 
   updateUser(payload: FormData, config?: AxiosRequestConfig) {
     return dashboardApiClient.patch(`${this.url}/${payload.get('id')}`, payload, config);
+  }
+
+  getSelectedUser(payload?: string, config?: AxiosRequestConfig) {
+    return dashboardApiClient.get(`${this.url}/${payload}`, config);
+  }
+
+  getCurrentUser(config?: AxiosRequestConfig) {
+    return dashboardApiClient.get(`${this.url}/self`, config);
   }
 }
 

@@ -1,18 +1,17 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 
-import { Button, ButtonVariants } from '@shared/components/button';
+import { Button } from '@shared/components/button';
 
 import { SearchForm } from '@features/search-form';
 
-import { RequestModal } from '@widgets/request-modal';
-import { RequestsList } from '@widgets/requests-list';
+import { RequestsCalendar } from '@widgets/requests-calendar';
 import { Request } from '@widgets/requests-list/types/requests.interfaces';
 
 export const Requests = () => {
-  const [isOpened, setIsOpened] = useState(false);
+  const [, setIsOpened] = useState(false);
   const [searchIsOpened, setSearchIsOpened] = useState(false);
-  const [selectedRequest, setSelectedRequest] = useState<Request>();
+  const [selectedRequest] = useState<Request>();
 
   const onClick = () => {
     setSearchIsOpened((prev) => !prev);
@@ -26,20 +25,18 @@ export const Requests = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Button
-        variant={ButtonVariants.UTILITY}
-        onClick={onClick}
-        className={cn({ 'border-red-600 text-red-600': searchIsOpened })}>
-        {searchIsOpened ? 'Close' : 'Search'}
-      </Button>
-      <SearchForm searchIsOpened={searchIsOpened} />
-      <RequestsList setSelectedRequest={setSelectedRequest} />
-      <RequestModal
-        isOpened={isOpened}
-        setIsOpened={setIsOpened}
-        selectedRequest={selectedRequest}
-        setSelectedRequest={setSelectedRequest}
-      />
+      <div className="w-2/3 mx-auto">
+        <Button
+          onClick={onClick}
+          className={cn('w-full mb-4', {
+            'border-red-600 text-red-600 hover:border-red-300 hover:text-red-300': searchIsOpened
+          })}>
+          {searchIsOpened ? 'Close' : 'Search'}
+        </Button>
+        <SearchForm searchIsOpened={searchIsOpened} />
+      </div>
+      {/*<RequestsList setSelectedRequest={setSelectedRequest} />*/}
+      <RequestsCalendar />
     </div>
   );
 };

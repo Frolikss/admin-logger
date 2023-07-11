@@ -12,10 +12,6 @@ class DashboardAuthApi {
   signIn(payload: LoginFieldValues, config?: AxiosRequestConfig) {
     return dashboardApiClient.post(`${this.url}/login`, payload, config);
   }
-
-  getSelf(config?: AxiosRequestConfig) {
-    return dashboardApiClient.get(`${this.url}/`, config);
-  }
 }
 
 export const authApi = new DashboardAuthApi('/auth');

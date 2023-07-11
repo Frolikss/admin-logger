@@ -17,15 +17,17 @@ class DashboardRequestsApi {
     }&lastName=${payload?.lastName ?? ''}&surname=${payload?.surname ?? ''}`;
 
     return dashboardApiClient.get(
-      `${this.url}/?limit=${payload?.limit ?? 10}&offset=${payload?.offset ?? 0}${
-        searchRequests ?? ''
-      }`,
+      `${this.url}/?limit=${payload?.limit}&offset=${payload?.offset}${searchRequests ?? ''}`,
       config
     );
   }
 
   updateRequest(payload: UpdateRequest, config?: AxiosRequestConfig) {
     return dashboardApiClient.patch(`${this.url}/${payload.requestId}`, payload, config);
+  }
+
+  getRequest(payload: string, config?: AxiosRequestConfig) {
+    return dashboardApiClient.get(`${this.url}/${payload}`, config);
   }
 }
 

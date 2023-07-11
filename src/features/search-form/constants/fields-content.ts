@@ -1,5 +1,3 @@
-import { EMAIL_PATTERN, FieldErrors } from '@shared/constants';
-
 import { Input } from '@shared/components/input';
 
 export enum SearchFieldsNames {
@@ -14,14 +12,7 @@ export const SEARCH_FIELDS_CONTENT = [
     name: SearchFieldsNames.EMAIL,
     placeholder: 'Email',
     component: Input,
-    label: 'Email',
-    type: 'email',
-    options: {
-      pattern: {
-        value: EMAIL_PATTERN,
-        message: FieldErrors.EMAIL
-      }
-    }
+    label: 'Email'
   },
   {
     name: SearchFieldsNames.FIRST_NAME,

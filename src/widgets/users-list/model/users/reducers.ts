@@ -1,9 +1,15 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 
-import { UserData } from '@shared/types';
+import { User, UserData } from '@shared/types';
 
 import { UsersState } from '../../types/users.interfaces';
-import { createUserAsync, deleteUsersAsync, getUsersAsync, updateUserAsync } from './actions';
+import {
+  createUserAsync,
+  getSelectedUserAsync,
+  getUsersAsync,
+  suspendUserAsync,
+  updateUserAsync
+} from './actions';
 
 export const createUserReducer = (builder: ActionReducerMapBuilder<UsersState>) => {
   builder
@@ -33,15 +39,15 @@ export const getUsersReducer = (builder: ActionReducerMapBuilder<UsersState>) =>
     });
 };
 
-export const deleteUserReducer = (builder: ActionReducerMapBuilder<UsersState>) => {
+export const suspendUserReducer = (builder: ActionReducerMapBuilder<UsersState>) => {
   builder
-    .addCase(deleteUsersAsync.pending, (state) => {
+    .addCase(suspendUserAsync.pending, (state) => {
       state.isLoading = true;
     })
-    .addCase(deleteUsersAsync.rejected, (state) => {
+    .addCase(suspendUserAsync.rejected, (state) => {
       state.isLoading = false;
     })
-    .addCase(deleteUsersAsync.fulfilled, (state) => {
+    .addCase(suspendUserAsync.fulfilled, (state) => {
       state.isLoading = false;
     });
 };
@@ -56,5 +62,20 @@ export const updateUserReducer = (builder: ActionReducerMapBuilder<UsersState>) 
     })
     .addCase(updateUserAsync.fulfilled, (state) => {
       state.isLoading = false;
+    });
+};
+
+export const getSelectedUserReducer = (builder: ActionReducerMapBuilder<UsersState>) => {
+  builder
+    .addCase(getSelectedUserAsync.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(getSelectedUserAsync.rejected, (state) => {
+      state.isLoading = true;
+      state.isAuthorized = false;
+    })
+    .addCase(getSelectedUserAsync.fulfilled, (state, { payload }: PayloadAction<User>) => {
+      state.isAuthorized = true;
+      state.selectedUser = payload;
     });
 };

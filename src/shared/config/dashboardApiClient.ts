@@ -4,7 +4,7 @@ import { requestConfig, responseConfig, responseErrorHandling } from './';
 
 export const dashboardApiClient = axios.create({
   withCredentials: true,
-  baseURL: 'http://49.12.205.35:9000/api'
+  baseURL: process.env.REACT_APP_BASE_URL
 });
 
 dashboardApiClient.interceptors.request.use(requestConfig);

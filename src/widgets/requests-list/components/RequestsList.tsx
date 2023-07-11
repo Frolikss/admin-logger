@@ -43,7 +43,7 @@ export const RequestsList: FC<Props> = ({ setSelectedRequest }) => {
     setSelectedRequest(requestsData?.requests[selectedRow]);
   }, [selectedRow]);
 
-  if (!requestsData?.requests) return null;
+  if (!requestsData?.requests) return <p>No requests</p>;
   return (
     <div className="flex flex-col items-center">
       <DashboardTable table={table} setSelectedRow={setSelectedRow} />

@@ -8,10 +8,6 @@ export const responseConfig = (response: AxiosResponse) => {
     localStorage.setItem(TokenNames.ACCESS_TOKEN, response.data?.accessToken);
   }
 
-  if (response.status === 200) {
-    toast.success('Operation successful', { toastId: 'success' });
-  }
-
   return response;
 };
 
