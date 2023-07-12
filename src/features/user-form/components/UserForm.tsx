@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
@@ -10,7 +11,7 @@ import { useAppDispatch, useAppSelector, useFilePreview } from '@shared/lib';
 
 import { selectSelectedUser } from '@features/login-form';
 import { UserFieldsNames } from '@features/user-form/constants/fields-names';
-import { getFormData } from '@features/user-form/lib/helpers/getFormData';
+import { setFormData } from '@features/user-form/lib/helpers/getFormData';
 import { useUserForm } from '@features/user-form/lib/hooks/useUserForm';
 
 import { suspendUserAsync, updateUserAsync } from '@widgets/users-list';
@@ -33,7 +34,11 @@ export const UserForm = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitSuccessful }
-  } = useForm<UserFieldValues>();
+  } = useForm<UserFieldValues>({
+    defaultValues: {
+      phone: '+380'
+    }
+  });
 
   const image: FileList = watch([UserFieldsNames.AVATAR])[0];
   const [imageSrc] = useFilePreview(image);
@@ -50,7 +55,7 @@ export const UserForm = () => {
       return null;
     }
     formData.append('id', searchParams?.get('id') ?? '');
-    getFormData(formData, data);
+    setFormData(formData, data);
 
     dispatch(updateUserAsync(formData));
   };
@@ -72,17 +77,22 @@ export const UserForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 bg-white rounded-md shadow-sm flex-0 basis-2/3">
+      className="p-4 bg-white flex flex-col gap-2 rounded-md shadow-sm flex-0 basis-2/3">
       {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
         <div key={name} className="flex flex-col gap-1">
-          <label htmlFor={name}>{label}</label>
-          <Input {...register(name, options)} {...props}>
+          <label htmlFor={name} className="flex items-baseline gap-2">
+            {label}
+            <span className="text-red-600 text-xs"> {errors[name]?.message}</span>
+          </label>
+          <Input
+            {...register(name, options)}
+            {...props}
+            className={cn({ 'border-red-600': errors[name] })}>
             {name === UserFieldsNames.AVATAR &&
               ((image && image.length !== 0) || selectedUser?.avatar) && (
                 <Image uploadImageSrc={imageSrc} fetchImageSrc={selectedUser?.avatar} />
               )}
           </Input>
-          <p className="text-red-600">{errors[name]?.message}</p>
         </div>
       ))}
       <Button className="flex-1 w-full mt-2">

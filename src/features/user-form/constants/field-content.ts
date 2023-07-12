@@ -6,6 +6,7 @@ import { UserFieldsNames } from './fields-names';
 export const USER_FIELDS_CONTENT = [
   {
     name: UserFieldsNames.AVATAR,
+    accept: 'image/png, image/jpeg',
     label: 'Avatar',
     type: 'file'
   },
@@ -27,6 +28,7 @@ export const USER_FIELDS_CONTENT = [
     placeholder: 'Enter your phone',
     label: 'Phone',
     type: 'tel',
+    maxLength: 13,
     options: {
       required: FieldErrors.REQUIRED,
       pattern: {

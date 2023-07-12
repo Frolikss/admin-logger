@@ -1,7 +1,7 @@
 import { UserFieldsNames } from '@features/user-form/constants/fields-names';
 import { UserFieldValues } from '@features/user-form/types/fields.interfaces';
 
-export const getFormData = (formData: FormData, data: UserFieldValues) => {
+export const setFormData = (formData: FormData, data: UserFieldValues) => {
   formData.append(UserFieldsNames.SURNAME, data.surname);
   formData.append(UserFieldsNames.EMAIL, data.email);
   formData.append(UserFieldsNames.AVATAR, data.avatar[0]);

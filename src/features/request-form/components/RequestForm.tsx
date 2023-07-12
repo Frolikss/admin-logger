@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import moment from 'moment';
 import { useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -71,7 +72,10 @@ export const RequestForm = () => {
           control={control}
           render={({ field: { onChange, value } }) => (
             <Select
-              className="flex-1 [&>*:last-child]:h-full outline-violet-600"
+              isDisabled={selectedRequest?.status !== 'on_review'}
+              className={cn(
+                'flex-1 [&>*:last-child]:h-full outline-violet-600 disabled:opacity-50'
+              )}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,

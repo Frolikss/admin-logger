@@ -6,9 +6,5 @@ export const REQUEST_OPTIONS = [
   {
     label: 'Decline',
     value: 'declined'
-  },
-  {
-    label: 'On review',
-    value: 'on_review'
   }
 ];
