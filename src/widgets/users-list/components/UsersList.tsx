@@ -18,7 +18,10 @@ export const UsersList = () => {
 
   const table = useReactTable({
     data: usersData?.users ?? [],
-    columns: getColumns((index) => usersData?.users[index].id ?? ''),
+    columns: getColumns(
+      (index) => usersData?.users[index].id ?? '',
+      (index) => usersData?.users[index].avatar ?? ''
+    ),
     getCoreRowModel: getCoreRowModel()
   });
 

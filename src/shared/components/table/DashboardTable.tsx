@@ -32,7 +32,7 @@ export const DashboardTable = <T,>({ table, setSelectedRow }: Props<T>) => {
             })}
             onClick={() => setSelectedRow && setSelectedRow(row.index)}>
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="p-2">
+              <td key={cell.id} className="text-center p-2">
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}

@@ -19,6 +19,8 @@
 }
 
 .rbc-today, .css-1n6sfyn-MenuList {
-    @apply bg-violet-100 rounded-md;
+    outline: none;
+    background: #ddd6fe;
+    border-radius: 8px;
 }
 
