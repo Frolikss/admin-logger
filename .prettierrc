@@ -1,0 +1,11 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "jsxBracketSameLine": true,
+  "importOrder": ["^@shared/constants", "^@shared/types",  "^@shared/(.*)$", "^@entities/(.*)$", "^@features/(.*)$", "^@widgets/(.*)$", "^@pages$", "^@app$", "^@svg/(.*)$", "^[../]", "^[./]", "^(.*\\/css$)", "^(.*\\.css$)"],
+  "importOrderSortSpecifiers": true,
+  "importOrderSeparation": true
+}

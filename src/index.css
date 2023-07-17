@@ -1,13 +1,26 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rc-pagination-item {
+    @apply hover:bg-white rounded-full transition-all
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.rc-pagination-item-active {
+    @apply bg-white rounded-lg;
 }
+
+.rbc-event {
+    @apply bg-violet-600;
+}
+
+.rbc-show-more {
+    @apply text-violet-600;
+}
+
+.rbc-today, .css-1n6sfyn-MenuList {
+    outline: none;
+    background: #ddd6fe;
+    border-radius: 8px;
+}
+
