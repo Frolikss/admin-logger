@@ -16,7 +16,6 @@ import { ProtectedRoute } from './ProtectedRoute';
 export const App = () => {
   const accessToken = localStorage.getItem(TokenNames.ACCESS_TOKEN);
   const dispatch = useAppDispatch();
-  const isAuthorized = useAppSelector(selectIsAuthorized);
 
   useEffect(() => {
     if (accessToken) {
@@ -26,10 +25,8 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route element={<ProtectedRoute isAuth={isAuthorized} to={AppRoutes.USERS} />}>
-        <Route key={AppRoutes.AUTH} path={AppRoutes.AUTH} element={<Authentication />} />
-      </Route>
-      <Route element={<ProtectedRoute isAuth={!isAuthorized} to={AppRoutes.AUTH} />}>
+      <Route key={AppRoutes.AUTH} path={AppRoutes.AUTH} element={<Authentication />} />
+      <Route element={<ProtectedRoute />}>
         <Route
           key={AppRoutes.USERS}
           path={AppRoutes.USERS}

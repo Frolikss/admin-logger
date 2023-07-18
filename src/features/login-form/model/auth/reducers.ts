@@ -26,7 +26,7 @@ export const getUserReducer = (builder: ActionReducerMapBuilder<AuthState>) => {
       state.isLoading = true;
     })
     .addCase(getUserAsync.rejected, (state) => {
-      state.isLoading = true;
+      state.isLoading = false;
       state.isAuthorized = false;
     })
     .addCase(getUserAsync.fulfilled, (state, { payload }: PayloadAction<User>) => {

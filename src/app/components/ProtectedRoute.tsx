@@ -1,11 +1,17 @@
-import { FC } from 'react';
-import { Navigate, Outlet, To } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 
-interface Props {
-  isAuth: boolean;
-  to: To;
-}
+import { AppRoutes, TokenNames } from '@shared/constants';
 
-export const ProtectedRoute: FC<Props> = ({ isAuth, to }) => {
-  return isAuth ? <Navigate to={to} /> : <Outlet />;
+export const ProtectedRoute = () => {
+  const token = localStorage.getItem(TokenNames.ACCESS_TOKEN);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate(AppRoutes.AUTH);
+    }
+  }, [token]);
+
+  return token ? <Outlet /> : <Navigate to={AppRoutes.AUTH} replace />;
 };
