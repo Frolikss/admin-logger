@@ -11,11 +11,11 @@
 }
 
 .rbc-event {
-    @apply bg-violet-600;
+    @apply bg-blue-600;
 }
 
 .rbc-show-more {
-    @apply text-violet-600;
+    @apply text-blue-600;
 }
 
 .rbc-today, .css-1n6sfyn-MenuList {

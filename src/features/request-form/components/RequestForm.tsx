@@ -73,9 +73,7 @@ export const RequestForm = () => {
           render={({ field: { onChange, value } }) => (
             <Select
               isDisabled={selectedRequest?.status !== 'on_review'}
-              className={cn(
-                'flex-1 [&>*:last-child]:h-full outline-violet-600 disabled:opacity-50'
-              )}
+              className={cn('flex-1 [&>*:last-child]:h-full outline-blue-600 disabled:opacity-50')}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,

@@ -9,7 +9,7 @@ export const SideNavMenu = () => {
   const location = useLocation();
 
   return (
-    <nav className="flex flex-col gap-2 h-screen bg-purple-500 p-2">
+    <nav className="flex flex-col gap-2 h-screen bg-blue-500 p-2">
       <Link to={AppRoutes.USERS} className="mb-4 select-none">
         Logo
       </Link>
@@ -17,8 +17,8 @@ export const SideNavMenu = () => {
         <Link
           key={path}
           to={path}
-          className={cn('hover:bg-purple-800 transition-all p-2 rounded-full', {
-            'bg-purple-800': location.pathname === path
+          className={cn('hover:bg-blue-800 transition-all p-2 rounded-full', {
+            'bg-blue-800': location.pathname === path
           })}>
           <Icon className="fill-white w-6 pointer-events-none" />
         </Link>
