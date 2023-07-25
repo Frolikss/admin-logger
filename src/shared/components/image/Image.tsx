@@ -14,7 +14,7 @@ export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
         currentTarget.src = `${process.env.REACT_APP_ADMIN_IMAGES}${fetchImageSrc}`;
       }}
       alt="img"
-      className="rounded-md p-2 bg-gray-200 mx-auto w-36 h-36 text-center object-contain"
+      className="text-center object-contain"
     />
   );
 };

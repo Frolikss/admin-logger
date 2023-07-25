@@ -20,7 +20,10 @@
 
 .rbc-today, .css-1n6sfyn-MenuList {
     outline: none;
-    background: #ddd6fe;
+    background: #bfdbfe;
     border-radius: 8px;
 }
 
+input[type="file"] {
+    display: none;
+}

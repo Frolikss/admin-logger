@@ -17,19 +17,19 @@ export const getColumns = (
   columnHelper.accessor('firstName', {
     header: 'First Name',
     cell: (props) => (
-      <div className="flex gap-2 items-center w-4">
+      <div className="flex gap-2 w-8 h-8">
         {getAvatar && getAvatar(props.row.index) ? (
           <img
-            className="w-4 h-4 rounded-full shrink-0"
+            className="w-8 h-8 rounded-full shrink-0"
             src={`http://49.12.205.35:9000${getAvatar(props.row.index)}`}
             alt="avatar"
           />
         ) : (
-          <div className="bg-violet-300 rounded-full w-full h-full text-xs p-[1px] shrink-0 flex items-center justify-center">
+          <div className="bg-blue-300 rounded-full w-full text-xs p-[1px] shrink-0 flex items-center justify-center">
             {props.getValue().charAt(0)}
           </div>
         )}
-        {props.getValue()}
+        <span className="flex items-center">{props.getValue()}</span>
       </div>
     )
   }),
@@ -57,14 +57,10 @@ export const getColumns = (
     header: 'Birthday',
     cell: (props) => moment(props.getValue()).format('DD.MM.yyyy')
   }),
-  columnHelper.accessor('createdAt', {
-    header: 'Created At',
-    cell: (props) => moment(props.getValue()).format('DD.MM.yyyy')
-  }),
   columnHelper.accessor('balance', {
     header: 'Edit',
     cell: (props) => (
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 justify-center items-center">
         <Link
           to={`${AppRoutes.USER}/?id=${handleUpdateClick(props.row.index)}`}
           className="p-2 hover:bg-gray-200 transition-all rounded-full">
