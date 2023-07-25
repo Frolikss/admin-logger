@@ -7,16 +7,15 @@ import { AppRoutes } from '@shared/constants';
 
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
-import { getRequestsAsync } from '@widgets/requests-list/model/requests/actions';
-import { selectRequests } from '@widgets/requests-list/model/requests/selectors';
+import { getRequestsAsync, selectRequests } from '@widgets/requests-list';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
 const STATUS_STYLES: Record<string, string> = {
-  approved: '#20cc16',
-  declined: '#ef4444',
-  on_review: '#facc15'
+  approved: '#16a34a',
+  declined: '#dc2626',
+  on_review: '#eab308'
 };
 
 export const RequestsCalendar = () => {
