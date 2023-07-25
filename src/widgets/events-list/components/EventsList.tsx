@@ -39,9 +39,9 @@ export const EventsList = () => {
 
   if (!eventsData) return null;
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <DashboardTable table={table} setSelectedRow={setSelectedRow} />
       <ListPagination count={eventsData.count} />
-    </>
+    </div>
   );
 };

@@ -3,7 +3,6 @@ import moment from 'moment/moment';
 import { FieldErrors } from '@shared/constants';
 
 import { Input } from '@shared/components/input';
-import { TextArea } from '@shared/components/textarea';
 
 export enum EventFieldNames {
   BANNER = 'banner',
@@ -48,11 +47,4 @@ export const EVENT_FIELDS_CONTENT = [
       required: FieldErrors.DATE
     }
   }
-  // {
-  //   name: EventFieldNames.DESCRIPTION,
-  //   component: TextArea,
-  //   label: 'Description',
-  //   placeholder: 'Description',
-  //   options: {}
-  // }
 ];

@@ -7,7 +7,6 @@ export const USER_FIELDS_CONTENT = [
   {
     name: UserFieldsNames.AVATAR,
     accept: 'image/png, image/jpeg',
-    label: 'Avatar',
     type: 'file'
   },
   {

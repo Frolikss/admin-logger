@@ -69,11 +69,15 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
                   'w-full h-full transition-all hover:bg-slate-200 flex items-center justify-center absolute left-0 top-0 z-10 mx-auto w-10 opacity-0 group-hover:opacity-100',
                   { 'opacity-100': !imageSrc }
                 )}>
-                <AddIcon className="w-12" />
+                <AddIcon
+                  className={cn('w-12 group-hover:opacity-100', {
+                    'opacity-0': selectedEvent?.banner && searchParams.has('id')
+                  })}
+                />
               </div>
             )}
-            {isBanner(name) && image && image.length !== 0 ? (
-              <Image uploadImageSrc={imageSrc} />
+            {isBanner(name) && ((image && image.length !== 0) || selectedEvent?.banner) ? (
+              <Image uploadImageSrc={imageSrc} fetchImageSrc={selectedEvent?.banner} />
             ) : null}
             <span className="text-red-600 text-xs">{errors[name]?.message}</span>
             <Component
@@ -95,7 +99,7 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
         control={control}
         render={({ field }) => <WysiwygEditor field={field} />}
       />
-      <Button className="p-2">Create Event</Button>
+      <Button className="p-2">{selectedEvent ? 'Edit Event' : 'Create Event'}</Button>
     </form>
   );
 };

@@ -14,7 +14,7 @@ export const DashboardTable = <T,>({ table, setSelectedRow }: Props<T>) => {
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th key={header.id} className="font-normal p-2">
+              <th key={header.id} className="font-normal p-2 first:text-left">
                 {header.isPlaceholder
                   ? null
                   : flexRender(header.column.columnDef.header, header.getContext())}
@@ -32,7 +32,7 @@ export const DashboardTable = <T,>({ table, setSelectedRow }: Props<T>) => {
             })}
             onClick={() => setSelectedRow && setSelectedRow(row.index)}>
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="p-2">
+              <td key={cell.id} className="p-2 first:text-left">
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}

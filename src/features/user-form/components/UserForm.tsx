@@ -40,6 +40,8 @@ export const UserForm = () => {
     }
   });
 
+  const isAvatar = (name: string) => name === UserFieldsNames.AVATAR;
+
   const image: FileList = watch([UserFieldsNames.AVATAR])[0];
   const [imageSrc] = useFilePreview(image);
 
@@ -80,19 +82,31 @@ export const UserForm = () => {
       className="p-4 bg-white flex flex-col gap-2 rounded-md shadow-sm flex-0 basis-2/3">
       {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
         <div key={name} className="flex flex-col gap-1">
-          <label htmlFor={name} className="flex items-baseline gap-2">
+          <label
+            htmlFor={name}
+            className={cn('flex items-baseline gap-2', {
+              'relative self-center flex group w-32 h-32 rounded-full overflow-hidden bg-gray-500':
+                isAvatar(name)
+            })}>
             {label}
+            {isAvatar(name) && (
+              <div
+                className={cn(
+                  'w-full h-full transition-all hover:bg-slate-200 flex items-center justify-center absolute left-0 top-0 z-10 mx-auto w-10 opacity-0 group-hover:opacity-100',
+                  { 'opacity-100': !imageSrc }
+                )}></div>
+            )}
+            {name === UserFieldsNames.AVATAR &&
+            ((isAvatar(name) && image && image.length !== 0) || selectedUser?.avatar) ? (
+              <Image uploadImageSrc={imageSrc} fetchImageSrc={selectedUser?.avatar} />
+            ) : null}
             <span className="text-red-600 text-xs"> {errors[name]?.message}</span>
           </label>
           <Input
+            id={name}
             {...register(name, options)}
             {...props}
-            className={cn({ 'border-red-600': errors[name] })}>
-            {name === UserFieldsNames.AVATAR &&
-              ((image && image.length !== 0) || selectedUser?.avatar) && (
-                <Image uploadImageSrc={imageSrc} fetchImageSrc={selectedUser?.avatar} />
-              )}
-          </Input>
+            className={cn({ 'border-red-600': errors[name], hidden: isAvatar(name) })}></Input>
         </div>
       ))}
       <Button className="flex-1 w-full mt-2">
