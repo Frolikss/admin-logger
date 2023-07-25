@@ -1,14 +1,17 @@
 import { convertToRaw } from 'draft-js';
+import { ContentState, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { FC, useEffect, useState } from 'react';
-import { ContentState, Editor, EditorState } from 'react-draft-wysiwyg';
+import { Editor } from 'react-draft-wysiwyg';
 import { ControllerRenderProps } from 'react-hook-form/dist/types/controller';
+
+import { EventFields } from '@features/event-form';
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 interface Props {
-  field: ControllerRenderProps<any, any>;
+  field: ControllerRenderProps<EventFields, 'description'>;
 }
 
 export const WysiwygEditor: FC<Props> = ({ field: { value, onChange } }) => {
@@ -38,7 +41,7 @@ export const WysiwygEditor: FC<Props> = ({ field: { value, onChange } }) => {
   return (
     <Editor
       editorState={editorState}
-      wrapperClassName="wrapper-class"
+      wrapperClassName="wrapper-class bg-white rounded-md"
       editorClassName="editor-class"
       onEditorStateChange={onEditorStateChange}
     />

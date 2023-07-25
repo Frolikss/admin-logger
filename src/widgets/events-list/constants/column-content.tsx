@@ -17,5 +17,9 @@ export const getColumns = () => [
   columnHelper.accessor('endDate', {
     header: 'End',
     cell: (props) => moment(props.getValue()).format('DD.MM.yyyy')
+  }),
+  columnHelper.accessor('creators', {
+    header: 'Creators',
+    cell: (props) => props.getValue().map((user) => `${user.firstName.charAt(0)}.${user.lastName}`)
   })
 ];
