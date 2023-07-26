@@ -13,7 +13,11 @@ import { useAppDispatch, useAppSelector } from '@shared/lib';
 import { REQUEST_OPTIONS } from '@features/request-form/constants/fields-content';
 import { RequestFieldsValues } from '@features/request-form/types/field.interfaces';
 
-import { getRequestAsync, selectSelectedRequest, updateRequestAsync } from '@widgets/requests-list';
+import {
+  getRequestAsync,
+  updateRequestAsync
+} from '@widgets/requests-calendar/model/requests/actions';
+import { selectSelectedRequest } from '@widgets/requests-calendar/model/requests/selectors';
 
 export const RequestForm = () => {
   const selectedRequest = useAppSelector(selectSelectedRequest);

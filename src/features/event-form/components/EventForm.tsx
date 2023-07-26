@@ -1,19 +1,15 @@
-import cn from 'classnames';
 import moment from 'moment';
 import { FC, Fragment, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
 import { Button } from '@shared/components/button';
-import { Image } from '@shared/components/image';
+import { ImageLabel } from '@shared/components/image-label';
 import { WysiwygEditor } from '@shared/components/wysiwyg-editor';
-import { useFilePreview } from '@shared/lib';
 
 import { EventFields } from '@features/event-form';
 
 import { EventItem } from '@widgets/events-list/types/events.interfaces';
-
-import { ReactComponent as AddIcon } from '@svg/add.svg';
 
 import { EVENT_FIELDS_CONTENT, EventFieldNames } from '../constants/fields-content';
 
@@ -35,7 +31,6 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
   const [searchParams] = useSearchParams();
 
   const image: FileList = watch([EventFieldNames.BANNER])[0];
-  const [imageSrc] = useFilePreview(image);
 
   const watchStartDate = watch(EventFieldNames.START_DATE);
   const watchEndDate = watch(EventFieldNames.END_DATE);
@@ -52,33 +47,22 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
   }, [selectedEvent]);
 
   return (
-    <form onSubmit={handleSubmit(onEventSubmit)} className="flex flex-col gap-2">
+    <form onSubmit={handleSubmit(onEventSubmit)} className="flex flex-col gap-4">
       {EVENT_FIELDS_CONTENT.map(({ name, options, label, component: Component, ...props }) => (
         <Fragment key={name}>
           <label
             htmlFor={name}
             className={
               isBanner(name)
-                ? 'relative self-center flex group w-32 h-32 rounded-full overflow-hidden bg-gray-500'
+                ? 'relative self-center flex group w-32 h-32 rounded-full overflow-hidden bg-gray-300'
                 : ''
             }>
             {label}
-            {isBanner(name) && (
-              <div
-                className={cn(
-                  'w-full h-full transition-all hover:bg-slate-200 flex items-center justify-center absolute left-0 top-0 z-10 mx-auto w-10 opacity-0 group-hover:opacity-100',
-                  { 'opacity-100': !imageSrc }
-                )}>
-                <AddIcon
-                  className={cn('w-12 group-hover:opacity-100', {
-                    'opacity-0': selectedEvent?.banner && searchParams.has('id')
-                  })}
-                />
-              </div>
-            )}
-            {isBanner(name) && ((image && image.length !== 0) || selectedEvent?.banner) ? (
-              <Image uploadImageSrc={imageSrc} fetchImageSrc={selectedEvent?.banner} />
-            ) : null}
+            <ImageLabel
+              isImage={name === EventFieldNames.BANNER}
+              image={image}
+              selectedItem={selectedEvent?.banner}
+            />
             <span className="text-red-600 text-xs">{errors[name]?.message}</span>
             <Component
               className={isBanner(name) ? 'hidden' : ''}
@@ -99,7 +83,7 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
         control={control}
         render={({ field }) => <WysiwygEditor field={field} />}
       />
-      <Button className="p-2">{selectedEvent ? 'Edit Event' : 'Create Event'}</Button>
+      <Button className="p-2">{selectedEvent ? 'Update Event' : 'Create Event'}</Button>
     </form>
   );
 };

@@ -40,9 +40,12 @@ export const WysiwygEditor: FC<Props> = ({ field: { value, onChange } }) => {
 
   return (
     <Editor
+      toolbar={{
+        options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'history']
+      }}
       editorState={editorState}
-      wrapperClassName="wrapper-class bg-white rounded-md"
-      editorClassName="editor-class"
+      wrapperClassName="wrapper-class border-1 bg-white rounded-md"
+      editorClassName="editor-class h-32"
       onEditorStateChange={onEditorStateChange}
     />
   );

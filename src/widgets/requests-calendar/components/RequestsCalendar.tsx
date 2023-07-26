@@ -7,7 +7,8 @@ import { AppRoutes } from '@shared/constants';
 
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
-import { getRequestsAsync, selectRequests } from '@widgets/requests-list';
+import { getRequestsAsync } from '@widgets/requests-calendar/model/requests/actions';
+import { selectRequests } from '@widgets/requests-calendar/model/requests/selectors';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -72,7 +73,7 @@ export const RequestsCalendar = () => {
       <Calendar
         eventPropGetter={eventPropGetter}
         onSelectEvent={onRequestClick}
-        className="h-screen"
+        className="h-screen text-base 2xl:text-xl "
         localizer={localizer}
         events={sortedEvents}
         startAccessor="start"

@@ -7,7 +7,7 @@ import { QueryParams } from '@shared/types';
 
 import { requestsApi } from '@shared/apis';
 
-import { UpdateRequest } from '@widgets/requests-list';
+import { UpdateRequest } from '../../types/requests.interfaces';
 
 export const getRequestsAsync = createAsyncThunk(
   `${SliceNames.REQUESTS}/GET_REQUESTS`,

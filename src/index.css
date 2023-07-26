@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .rc-pagination-item {
-    @apply hover:bg-white rounded-full transition-all
+    @apply transition-all px-3 text-gray-600 py-1 bg-neutral-100 rounded-md hover:bg-blue-500 hover:text-white;
 }
 
 .rc-pagination-item-active {
-    @apply bg-white rounded-lg;
+    @apply bg-blue-300 text-white;
 }
 
 .rbc-event {
@@ -16,6 +16,10 @@
 
 .rbc-show-more {
     @apply text-blue-600;
+}
+
+.rc-pagination-total-text {
+    @apply absolute left-2 text-gray-500 text-sm;
 }
 
 .rbc-today, .css-1n6sfyn-MenuList {

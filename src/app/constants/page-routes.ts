@@ -5,7 +5,8 @@ import { EditEvent, EditRequest, EditUser, Events, Requests, Users } from '@page
 export const PROTECTED_ROUTES = [
   {
     path: AppRoutes.USERS,
-    element: Users
+    element: Users,
+    linkPath: AppRoutes.USER
   },
   {
     path: AppRoutes.USER,
@@ -21,7 +22,8 @@ export const PROTECTED_ROUTES = [
   },
   {
     path: AppRoutes.EVENTS,
-    element: Events
+    element: Events,
+    linkPath: AppRoutes.EVENT
   },
   {
     path: AppRoutes.EVENT,

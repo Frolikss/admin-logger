@@ -9,7 +9,7 @@ import { DashboardTable } from '@shared/components/table';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
 import { getColumns } from '../constants/column-content';
-import { getEventsAsync } from '../model/actions';
+import { getEventsAsync, unsetSelectedEvent } from '../model/actions';
 import { selectEvents } from '../model/selectors';
 
 export const EventsList = () => {
@@ -29,6 +29,9 @@ export const EventsList = () => {
 
   useEffect(() => {
     dispatch(getEventsAsync(searchParams.get('offset') ?? '0'));
+    if (!searchParams.has('id')) {
+      dispatch(unsetSelectedEvent());
+    }
   }, [searchParams]);
 
   useEffect(() => {
@@ -39,7 +42,7 @@ export const EventsList = () => {
 
   if (!eventsData) return null;
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col bg-white p-2 shadow-md rounded-md">
       <DashboardTable table={table} setSelectedRow={setSelectedRow} />
       <ListPagination count={eventsData.count} />
     </div>

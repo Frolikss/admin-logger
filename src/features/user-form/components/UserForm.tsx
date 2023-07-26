@@ -5,9 +5,9 @@ import { useSearchParams } from 'react-router-dom';
 import { StatusNames } from '@shared/constants';
 
 import { Button, ButtonVariants } from '@shared/components/button';
-import { Image } from '@shared/components/image';
+import { ImageLabel } from '@shared/components/image-label';
 import { Input } from '@shared/components/input';
-import { useAppDispatch, useAppSelector, useFilePreview } from '@shared/lib';
+import { useAppDispatch, useAppSelector } from '@shared/lib';
 
 import { selectSelectedUser } from '@features/login-form';
 import { UserFieldsNames } from '@features/user-form/constants/fields-names';
@@ -43,7 +43,6 @@ export const UserForm = () => {
   const isAvatar = (name: string) => name === UserFieldsNames.AVATAR;
 
   const image: FileList = watch([UserFieldsNames.AVATAR])[0];
-  const [imageSrc] = useFilePreview(image);
 
   const onSubmit: SubmitHandler<UserFieldValues> = (data) => {
     const formData = new FormData();
@@ -89,17 +88,11 @@ export const UserForm = () => {
                 isAvatar(name)
             })}>
             {label}
-            {isAvatar(name) && (
-              <div
-                className={cn(
-                  'w-full h-full transition-all hover:bg-slate-200 flex items-center justify-center absolute left-0 top-0 z-10 mx-auto w-10 opacity-0 group-hover:opacity-100',
-                  { 'opacity-100': !imageSrc }
-                )}></div>
-            )}
-            {name === UserFieldsNames.AVATAR &&
-            ((isAvatar(name) && image && image.length !== 0) || selectedUser?.avatar) ? (
-              <Image uploadImageSrc={imageSrc} fetchImageSrc={selectedUser?.avatar} />
-            ) : null}
+            <ImageLabel
+              isImage={name === UserFieldsNames.AVATAR}
+              image={image}
+              selectedItem={selectedUser?.avatar}
+            />
             <span className="text-red-600 text-xs"> {errors[name]?.message}</span>
           </label>
           <Input

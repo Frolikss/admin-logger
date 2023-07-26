@@ -9,7 +9,7 @@ import { useAppDispatch } from '@shared/lib';
 import { SEARCH_FIELDS_CONTENT } from '@features/search-form/constants/fields-content';
 import { SearchFieldValues } from '@features/search-form/types/fields.interfaces';
 
-import { getRequestsAsync } from '@widgets/requests-list/model/requests/actions';
+import { getRequestsAsync } from '@widgets/requests-calendar/model/requests/actions';
 
 interface Props {
   searchIsOpened: boolean;

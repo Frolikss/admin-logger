@@ -10,7 +10,7 @@ interface Props<T> {
 export const DashboardTable = <T,>({ table, setSelectedRow }: Props<T>) => {
   return (
     <table className="w-full">
-      <thead className="text-xs border-b-2">
+      <thead className="text-xs 2xl:text-xl border-b-2">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
@@ -27,9 +27,12 @@ export const DashboardTable = <T,>({ table, setSelectedRow }: Props<T>) => {
         {table.getRowModel().rows.map((row) => (
           <tr
             key={row.id}
-            className={cn('transition-all text-center whitespace-nowrap border-b-1', {
-              'hover:bg-blue-400 cursor-pointer': setSelectedRow
-            })}
+            className={cn(
+              'transition-all text-base 2xl:text-xl text-center whitespace-nowrap [&:not(:last-child)]:border-b-1',
+              {
+                'hover:bg-blue-400 cursor-pointer': setSelectedRow
+              }
+            )}
             onClick={() => setSelectedRow && setSelectedRow(row.index)}>
             {row.getVisibleCells().map((cell) => (
               <td key={cell.id} className="p-2 first:text-left">

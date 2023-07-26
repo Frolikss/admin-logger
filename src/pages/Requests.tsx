@@ -6,7 +6,7 @@ import { Button } from '@shared/components/button';
 import { SearchForm } from '@features/search-form';
 
 import { RequestsCalendar } from '@widgets/requests-calendar';
-import { Request } from '@widgets/requests-list/types/requests.interfaces';
+import { Request } from '@widgets/requests-calendar/types/requests.interfaces';
 
 export const Requests = () => {
   const [, setIsOpened] = useState(false);

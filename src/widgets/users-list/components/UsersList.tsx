@@ -36,7 +36,7 @@ export const UsersList = () => {
 
   if (!usersData?.users) return <p>No users</p>;
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-white p-2 shadow-md rounded-md">
       <DashboardTable table={table} />
       <ListPagination count={usersData.count} />
     </div>

@@ -1,7 +1,13 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 
 import { EventData, EventItem, EventsState } from '../types/events.interfaces';
-import { createEventAsync, getEventAsync, getEventsAsync, updateEventAsync } from './actions';
+import {
+  createEventAsync,
+  getEventAsync,
+  getEventsAsync,
+  unsetSelectedEvent,
+  updateEventAsync
+} from './actions';
 
 export const getEventsReducer = (builder: ActionReducerMapBuilder<EventsState>) => {
   builder
@@ -55,4 +61,10 @@ export const createEventReducer = (builder: ActionReducerMapBuilder<EventsState>
     .addCase(createEventAsync.fulfilled, (state) => {
       state.isLoading = false;
     });
+};
+
+export const unsetSelfReducer = (builder: ActionReducerMapBuilder<EventsState>) => {
+  builder.addCase(unsetSelectedEvent, (state) => {
+    state.selectedEvent = undefined;
+  });
 };

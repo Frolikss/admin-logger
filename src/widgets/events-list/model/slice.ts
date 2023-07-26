@@ -7,6 +7,7 @@ import {
   createEventReducer,
   getEventReducer,
   getEventsReducer,
+  unsetSelfReducer,
   updateEventReducer
 } from './reducers';
 
@@ -23,6 +24,7 @@ const slice = createSlice({
     getEventsReducer(builder);
     updateEventReducer(builder);
     createEventReducer(builder);
+    unsetSelfReducer(builder);
   }
 });
 
