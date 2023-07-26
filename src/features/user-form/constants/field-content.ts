@@ -70,12 +70,3 @@ export const USER_FIELDS_CONTENT = [
     }
   }
 ];
-
-export const initialValue = {
-  surname: '',
-  email: '',
-  firstName: '',
-  lastName: '',
-  phone: '',
-  birthday: ''
-};

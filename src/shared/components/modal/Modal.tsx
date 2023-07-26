@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Dispatch, FC, ReactNode, SetStateAction, useEffect } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ToastContainer } from 'react-toastify';
 

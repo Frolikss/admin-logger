@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { AppRoutes } from '@shared/constants';
 
-import { ListPagination } from '@shared/components/list-pagination/ListPagination';
+import { ListPagination } from '@shared/components/list-pagination';
 import { DashboardTable } from '@shared/components/table';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 

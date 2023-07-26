@@ -2,7 +2,7 @@ import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { ListPagination } from '@shared/components/list-pagination/ListPagination';
+import { ListPagination } from '@shared/components/list-pagination';
 import { DashboardTable } from '@shared/components/table';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
