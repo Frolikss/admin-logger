@@ -28,12 +28,12 @@ export const App = () => {
     <Routes>
       <Route key={AppRoutes.AUTH} path={AppRoutes.AUTH} element={<Authentication />} />
       <Route element={<ProtectedRoute />}>
-        {PROTECTED_ROUTES.map(({ path, element: Element }) => (
+        {PROTECTED_ROUTES.map(({ path, element: Element, linkPath }) => (
           <Route
             key={path}
             path={path}
             element={
-              <DashboardWrapper>
+              <DashboardWrapper linkPath={linkPath}>
                 <Element />
               </DashboardWrapper>
             }

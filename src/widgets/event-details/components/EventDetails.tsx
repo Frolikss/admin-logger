@@ -1,8 +1,10 @@
 import moment from 'moment';
 import { useEffect } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
+import { AppRoutes } from '@shared/constants';
 
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
@@ -22,6 +24,7 @@ export const EventDetails = () => {
   const dispatch = useAppDispatch();
 
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const onEventSubmit: SubmitHandler<EventFields> = ({
     startDate,
@@ -60,6 +63,7 @@ export const EventDetails = () => {
     } else {
       dispatch(createEventAsync(formData));
     }
+    navigate(AppRoutes.EVENTS);
   };
 
   useEffect(() => {
@@ -69,6 +73,10 @@ export const EventDetails = () => {
     }
   }, []);
 
-  if (!selectedEvent && searchParams.has('id')) return <p>Event doesn`&apos;`t exist</p>;
-  return <EventForm onEventSubmit={onEventSubmit} selectedEvent={selectedEvent} />;
+  if (!selectedEvent && searchParams.has('id')) return <p>Event doesn&apos;t exist</p>;
+  return (
+    <div className="p-4 rounded-md bg-white w-2/3 mx-auto shadow-md">
+      <EventForm onEventSubmit={onEventSubmit} selectedEvent={selectedEvent} />
+    </div>
+  );
 };

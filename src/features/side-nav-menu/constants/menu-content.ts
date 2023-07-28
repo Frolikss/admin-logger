@@ -9,14 +9,17 @@ import { MenuItem } from '../types/menu.interfaces';
 export const MENU_CONTENT: MenuItem[] = [
   {
     path: AppRoutes.USERS,
-    icon: DashboardIcon
+    icon: DashboardIcon,
+    text: 'Users'
   },
   {
     path: AppRoutes.REQUESTS,
-    icon: CalendarIcon
+    icon: CalendarIcon,
+    text: 'Requests'
   },
   {
     path: AppRoutes.EVENTS,
-    icon: EventsIcon
+    icon: EventsIcon,
+    text: 'Events'
   }
 ];

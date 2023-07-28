@@ -9,7 +9,7 @@ interface Props {
 export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
   const [searchParams] = useSearchParams();
 
-  if (!searchParams.has('id')) return null;
+  if (!searchParams.has('id') && !uploadImageSrc) return null;
   return (
     <img
       src={

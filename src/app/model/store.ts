@@ -3,7 +3,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { authReducer } from '@features/login-form';
 
 import { eventsReducer } from '@widgets/events-list';
-import { requestsReducer } from '@widgets/requests-list';
+import { requestsReducer } from '@widgets/requests-calendar';
 import { usersReducer } from '@widgets/users-list';
 
 const rootReducer = combineReducers({

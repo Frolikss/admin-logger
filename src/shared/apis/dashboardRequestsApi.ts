@@ -4,7 +4,7 @@ import { QueryParams } from '@shared/types';
 
 import { dashboardApiClient } from '@shared/config';
 
-import { UpdateRequest } from '@widgets/requests-list';
+import { UpdateRequest } from '@widgets/requests-calendar/types/requests.interfaces';
 
 class DashboardRequestsApi {
   constructor(private readonly url: string) {
