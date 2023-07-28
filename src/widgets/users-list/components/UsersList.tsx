@@ -1,16 +1,22 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { useEffect } from 'react';
+import { FieldValues } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
 import { ListPagination } from '@shared/components/list-pagination';
 import { DashboardTable } from '@shared/components/table';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
+import { TableSearchForm } from '@features/table-search-form';
+
 import { getUsersAsync, selectUsers } from '@widgets/users-list';
+import { USERS_SEARCH_CONTENT } from '@widgets/users-list/constants/field-content';
 
 import { getColumns } from '../constants/columns-content';
 
 export const UsersList = () => {
+  const [_, setSearchParams] = useSearchParams();
+
   const dispatch = useAppDispatch();
   const usersData = useAppSelector(selectUsers);
 
@@ -25,11 +31,18 @@ export const UsersList = () => {
     getCoreRowModel: getCoreRowModel()
   });
 
+  const onSubmit = (data: FieldValues) => setSearchParams({ search: data.search });
+
+  useEffect(() => {
+    setSearchParams();
+  }, []);
+
   useEffect(() => {
     dispatch(
       getUsersAsync({
         limit: searchParams.get('limit') ?? '10',
-        offset: searchParams.get('offset') ?? '0'
+        offset: searchParams.get('offset') ?? '0',
+        search: searchParams.get('search') ?? ''
       })
     );
   }, [searchParams]);
@@ -37,6 +50,7 @@ export const UsersList = () => {
   if (!usersData?.users) return <p>No users</p>;
   return (
     <div className="flex flex-col items-center bg-white p-2 shadow-md rounded-md">
+      <TableSearchForm fields={USERS_SEARCH_CONTENT} onSubmit={onSubmit} />
       <DashboardTable table={table} />
       <ListPagination count={usersData.count} />
     </div>

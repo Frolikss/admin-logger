@@ -15,7 +15,9 @@ class DashboardUsersApi {
 
   getUsers(payload?: QueryParams, config?: AxiosRequestConfig) {
     return dashboardApiClient.get(
-      `${this.url}/?limit=${payload?.limit ?? 10}&offset=${payload?.offset ?? 0}`,
+      `${this.url}/?limit=${payload?.limit ?? 10}&offset=${payload?.offset ?? 0}&search=${
+        payload?.search ?? ''
+      }`,
       config
     );
   }

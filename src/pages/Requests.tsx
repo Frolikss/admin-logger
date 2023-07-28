@@ -1,42 +1,42 @@
-import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Button } from '@shared/components/button';
+import { Modal } from '@shared/components/modal';
 
 import { SearchForm } from '@features/search-form';
 
 import { RequestsCalendar } from '@widgets/requests-calendar';
-import { Request } from '@widgets/requests-calendar/types/requests.interfaces';
+
+import { ReactComponent as SearchIcon } from '@svg/search.svg';
 
 export const Requests = () => {
-  const [, setIsOpened] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [searchIsOpened, setSearchIsOpened] = useState(false);
-  const [selectedRequest] = useState<Request>();
 
-  const onClick = () => {
+  const onCloseModal = () => {
+    setSearchIsOpened(false);
+  };
+
+  const onOpenModal = () => {
     setSearchIsOpened((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (selectedRequest) {
-      setIsOpened(true);
-    }
-  }, [selectedRequest]);
-
   return (
     <div className="flex flex-col gap-4">
-      <div className="w-2/3 mx-auto">
-        <Button
-          onClick={onClick}
-          className={cn('w-full mb-4', {
-            'border-red-600 text-red-600 hover:border-red-300 hover:text-red-300': searchIsOpened
-          })}>
-          {searchIsOpened ? 'Close' : 'Search'}
-        </Button>
-        <SearchForm searchIsOpened={searchIsOpened} />
-      </div>
-      {/*<RequestsList setSelectedRequest={setSelectedRequest} />*/}
+      <Button
+        ref={buttonRef}
+        className="border-none absolute m-2 top-0 right-0 hover:bg-gray-200"
+        onClick={onOpenModal}>
+        <SearchIcon className="fill-black w-6 pointer-events-none" />
+      </Button>
       <RequestsCalendar />
+      <Modal
+        header="Search"
+        buttonRef={buttonRef}
+        isOpened={searchIsOpened}
+        onCloseModal={onCloseModal}>
+        <SearchForm searchIsOpened={searchIsOpened} onCloseModal={onCloseModal} />
+      </Modal>
     </div>
   );
 };

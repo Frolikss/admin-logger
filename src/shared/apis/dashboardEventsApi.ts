@@ -1,5 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 
+import { QueryParams } from '@shared/types';
+
 import { dashboardApiClient } from '@shared/config';
 
 class DashboardAuthApi {
@@ -7,8 +9,13 @@ class DashboardAuthApi {
     this.url = url;
   }
 
-  getEvents(payload: string, config?: AxiosRequestConfig) {
-    return dashboardApiClient.get(`${this.url}/?limit=10&offset=${payload}`, config);
+  getEvents(payload: QueryParams, config?: AxiosRequestConfig) {
+    return dashboardApiClient.get(
+      `${this.url}/?limit=10&offset=${payload.offset}&search=${payload.search ?? ''}&name=${
+        payload.name ?? ''
+      }&startDate=${payload.startDate ?? ''}&endDate=${payload.endDate ?? ''}`,
+      config
+    );
   }
 
   getEvent(payload: string, config?: AxiosRequestConfig) {

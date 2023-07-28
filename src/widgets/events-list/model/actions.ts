@@ -3,11 +3,13 @@ import { toast } from 'react-toastify';
 
 import { SliceNames, ToastIds } from '@shared/constants';
 
+import { QueryParams } from '@shared/types';
+
 import { eventsApi } from '@shared/apis';
 
 export const getEventsAsync = createAsyncThunk(
   `${SliceNames.EVENTS}/GET_EVENTS`,
-  async (payload: string) => {
+  async (payload: QueryParams) => {
     const { data } = await eventsApi.getEvents(payload);
     return data;
   }

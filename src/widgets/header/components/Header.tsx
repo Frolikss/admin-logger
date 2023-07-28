@@ -7,7 +7,6 @@ import { Button } from '@shared/components/button';
 
 import { ReactComponent as AddIcon } from '@svg/add.svg';
 import { ReactComponent as MenuIcon } from '@svg/menu.svg';
-import { ReactComponent as SearchIcon } from '@svg/search.svg';
 
 interface Props {
   path?: AppRoutes;
@@ -35,11 +34,6 @@ export const Header: FC<Props> = ({ path, setIsMenuOpened }) => {
           <Link to={path} className="p-2 rounded-md transition-all hover:bg-gray-200">
             <AddIcon className="w-6" />
           </Link>
-        )}
-        {pathname === AppRoutes.REQUESTS && (
-          <Button className="border-none hover:bg-gray-200">
-            <SearchIcon className="fill-black w-6" />
-          </Button>
         )}
       </div>
     </header>
