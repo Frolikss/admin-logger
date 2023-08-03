@@ -77,9 +77,11 @@ export const UserForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 bg-white flex w-2/5 flex-col gap-2 rounded-md shadow-sm flex-0">
+      className="p-4 bg-white flex flex-wrap justify-center w-2/3 gap-2 rounded-md shadow-sm flex-0">
       {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
-        <div key={name} className="flex flex-col gap-1">
+        <div
+          key={name}
+          className={cn('flex flex-1 flex-col basis-1/3 gap-1', { 'basis-full': isAvatar(name) })}>
           <label
             htmlFor={name}
             className={cn('flex items-baseline gap-2', {
@@ -104,14 +106,14 @@ export const UserForm = () => {
             })}></Input>
         </div>
       ))}
-      <Button className="flex-1 w-full mt-2">
+      <Button className="flex-1 w-full mt-2 basis-1/2">
         {searchParams.has('id') ? 'Update User' : 'Create User'}
       </Button>
       {searchParams.has('id') && (
         <Button
           variant={ButtonVariants.SECONDARY}
           onClick={onSuspendClick}
-          className="flex-1 border-secondary-600 w-full mt-2">
+          className="flex-1 border-secondary-600 w-full mt-2 basis-1/2">
           {userIsActive ? 'Suspend' : 'Activate'}
         </Button>
       )}
