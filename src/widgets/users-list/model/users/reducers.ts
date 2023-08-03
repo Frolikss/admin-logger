@@ -71,10 +71,11 @@ export const getSelectedUserReducer = (builder: ActionReducerMapBuilder<UsersSta
       state.isLoading = true;
     })
     .addCase(getSelectedUserAsync.rejected, (state) => {
-      state.isLoading = true;
+      state.isLoading = false;
       state.isAuthorized = false;
     })
     .addCase(getSelectedUserAsync.fulfilled, (state, { payload }: PayloadAction<User>) => {
+      state.isLoading = false;
       state.isAuthorized = true;
       state.selectedUser = payload;
     });

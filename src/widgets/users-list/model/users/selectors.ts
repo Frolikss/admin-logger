@@ -4,3 +4,4 @@ import { createSelector } from '@reduxjs/toolkit';
 const selectUsersState = (state: RootState) => state.users;
 
 export const selectUsers = createSelector(selectUsersState, (state) => state.users);
+export const selectUsersIsLoading = createSelector(selectUsersState, (state) => state.isLoading);

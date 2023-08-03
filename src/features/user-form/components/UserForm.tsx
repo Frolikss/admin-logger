@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { Button, ButtonVariants, Input } from 'logger-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { StatusNames } from '@shared/constants';
+import { AppRoutes, StatusNames } from '@shared/constants';
 
 import { ImageLabel } from '@shared/components/image-label';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
@@ -13,12 +13,15 @@ import { UserFieldsNames } from '@features/user-form/constants/fields-names';
 import { setFormData } from '@features/user-form/lib/helpers/getFormData';
 import { useUserForm } from '@features/user-form/lib/hooks/useUserForm';
 
-import { suspendUserAsync, updateUserAsync } from '@widgets/users-list';
+import { selectUsersIsLoading, suspendUserAsync, updateUserAsync } from '@widgets/users-list';
+
+import { ReactComponent as LoadingIcon } from '@svg/loading.svg';
 
 import { USER_FIELDS_CONTENT } from '../constants/field-content';
 import { UserFieldValues } from '../types/fields.interfaces';
 
 export const UserForm = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const dispatch = useAppDispatch();
@@ -26,13 +29,15 @@ export const UserForm = () => {
   const selectedUser = useAppSelector(selectSelectedUser);
   const userIsActive = selectedUser?.status === StatusNames.ACTIVE;
 
+  const isLoading = useAppSelector(selectUsersIsLoading);
+
   const {
     register,
     reset,
     watch,
     handleSubmit,
     setError,
-    formState: { errors, isSubmitSuccessful }
+    formState: { errors }
   } = useForm<UserFieldValues>({
     defaultValues: {
       phone: '+380'
@@ -57,7 +62,7 @@ export const UserForm = () => {
     formData.append('id', searchParams?.get('id') ?? '');
     setFormData(formData, data);
 
-    dispatch(updateUserAsync(formData));
+    dispatch(updateUserAsync(formData)).then(() => navigate(AppRoutes.USERS));
   };
 
   const onSuspendClick = () => {
@@ -72,12 +77,17 @@ export const UserForm = () => {
     }
   };
 
-  useUserForm(isSubmitSuccessful, reset, selectedUser);
+  useUserForm(reset, selectedUser);
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 bg-white flex flex-wrap justify-center w-2/3 gap-2 rounded-md shadow-sm flex-0">
+      className="p-4 bg-white relative flex flex-wrap justify-center w-2/3 gap-2 rounded-md shadow-sm flex-0">
+      {isLoading && (
+        <div className="w-full h-full bg-white/60 z-50 absolute top-0 left-0 flex items-center justify-center">
+          <LoadingIcon />
+        </div>
+      )}
       {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
         <div
           key={name}

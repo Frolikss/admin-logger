@@ -1,9 +1,7 @@
 import moment from 'moment/moment';
 import { useEffect } from 'react';
 import { UseFormReset } from 'react-hook-form';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-
-import { AppRoutes } from '@shared/constants';
+import { useSearchParams } from 'react-router-dom';
 
 import { User } from '@shared/types';
 
@@ -13,13 +11,8 @@ import { UserFieldValues } from '@features/user-form/types/fields.interfaces';
 
 import { getSelectedUserAsync } from '@widgets/users-list';
 
-export const useUserForm = (
-  isSubmitSuccessful: boolean,
-  reset: UseFormReset<UserFieldValues>,
-  selectedUser?: User
-) => {
+export const useUserForm = (reset: UseFormReset<UserFieldValues>, selectedUser?: User) => {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -36,10 +29,4 @@ export const useUserForm = (
       reset({ birthday: `${date}`, ...rest });
     }
   }, [selectedUser]);
-
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      navigate(AppRoutes.USERS);
-    }
-  }, [isSubmitSuccessful]);
 };
