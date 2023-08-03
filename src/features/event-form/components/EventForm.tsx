@@ -1,9 +1,9 @@
+import { Button } from 'logger-components';
 import moment from 'moment';
 import { FC, Fragment, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
-import { Button } from '@shared/components/button';
 import { ImageLabel } from '@shared/components/image-label';
 import { WysiwygEditor } from '@shared/components/wysiwyg-editor';
 
@@ -54,7 +54,7 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
             htmlFor={name}
             className={
               isBanner(name)
-                ? 'relative self-center flex group w-32 h-32 rounded-full overflow-hidden bg-gray-300'
+                ? 'relative self-center cursor-pointer border-2 flex group w-32 h-32 rounded-full overflow-hidden bg-utility-300'
                 : ''
             }>
             {label}
@@ -63,7 +63,7 @@ export const EventForm: FC<Props> = ({ onEventSubmit, selectedEvent }) => {
               image={image}
               selectedItem={selectedEvent?.banner}
             />
-            <span className="text-red-600 text-xs">{errors[name]?.message}</span>
+            <span className="text-secondary-600 pl-2 text-xs">{errors[name]?.message}</span>
             <Component
               className={isBanner(name) ? 'hidden' : ''}
               id={name}

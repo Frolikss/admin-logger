@@ -1,9 +1,8 @@
+import { Button } from 'logger-components';
 import { Dispatch, FC, SetStateAction } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { AppRoutes } from '@shared/constants';
-
-import { Button } from '@shared/components/button';
 
 import { ReactComponent as AddIcon } from '@svg/add.svg';
 import { ReactComponent as MenuIcon } from '@svg/menu.svg';
@@ -31,7 +30,7 @@ export const Header: FC<Props> = ({ path, setIsMenuOpened }) => {
       {HEADERS[pathname] && <h2 className="text-xl 2xl:text-2xl">{HEADERS[pathname]}</h2>}
       <div className="flex items-center justify-center gap-2">
         {path && (
-          <Link to={path} className="p-2 rounded-md transition-all hover:bg-gray-200">
+          <Link to={path} className="p-2 rounded-md transition-all hover:bg-utility-200">
             <AddIcon className="w-6" />
           </Link>
         )}

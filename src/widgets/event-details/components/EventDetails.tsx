@@ -53,17 +53,16 @@ export const EventDetails = () => {
     }
 
     formData.append(EventFieldNames.NAME, name);
-    formData.append(EventFieldNames.DESCRIPTION, description);
+    formData.append(EventFieldNames.DESCRIPTION, description ?? '');
     formData.append(EventFieldNames.START_DATE, `${moment.utc(startDate).valueOf()}`);
     formData.append(EventFieldNames.END_DATE, `${moment.utc(endDate).valueOf()}`);
 
     if (searchParams.has('id')) {
       formData.append('id', selectedEvent?.id ?? '');
-      dispatch(updateEventAsync(formData));
+      dispatch(updateEventAsync(formData)).then(() => navigate(AppRoutes.EVENTS));
     } else {
-      dispatch(createEventAsync(formData));
+      dispatch(createEventAsync(formData)).then(() => navigate(AppRoutes.EVENTS));
     }
-    navigate(AppRoutes.EVENTS);
   };
 
   useEffect(() => {
@@ -73,7 +72,8 @@ export const EventDetails = () => {
     }
   }, []);
 
-  if (!selectedEvent && searchParams.has('id')) return <p>Event doesn&apos;t exist</p>;
+  if (!selectedEvent && searchParams.has('id'))
+    return <p className="text-center">Event doesn&apos;t exist</p>;
   return (
     <div className="p-4 rounded-md bg-white w-2/3 mx-auto shadow-md">
       <EventForm onEventSubmit={onEventSubmit} selectedEvent={selectedEvent} />

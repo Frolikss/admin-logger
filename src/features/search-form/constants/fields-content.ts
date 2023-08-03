@@ -1,4 +1,4 @@
-import { Input } from '@shared/components/input';
+import { Input } from 'logger-components';
 
 export enum SearchFieldsNames {
   EMAIL = 'email',

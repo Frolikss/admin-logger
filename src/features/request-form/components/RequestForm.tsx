@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { Button } from 'logger-components';
 import moment from 'moment';
 import { useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -7,7 +8,6 @@ import Select from 'react-select';
 
 import { AppRoutes } from '@shared/constants';
 
-import { Button } from '@shared/components/button';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
 import { REQUEST_OPTIONS } from '@features/request-form/constants/fields-content';
@@ -64,7 +64,7 @@ export const RequestForm = () => {
           <p className="font-bold">{moment(selectedRequest?.startDate).format('DD.MM.YYYY')}</p>
         </div>
         <span>-</span>
-        <div className="flex flex-col flex-1 justify-center items-center gap-2 rounded-md p-2 bg-red-200">
+        <div className="flex flex-col flex-1 justify-center items-center gap-2 rounded-md p-2 bg-secondary-200">
           <p>End Date: </p>
           <p className="font-bold">{moment(selectedRequest?.endDate).format('DD.MM.YYYY')}</p>
         </div>
@@ -77,7 +77,9 @@ export const RequestForm = () => {
           render={({ field: { onChange, value } }) => (
             <Select
               isDisabled={selectedRequest?.status !== 'on_review'}
-              className={cn('flex-1 [&>*:last-child]:h-full outline-blue-600 disabled:opacity-50')}
+              className={cn(
+                'flex-1 [&>*:last-child]:h-full outline-primary-600 disabled:opacity-50'
+              )}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,

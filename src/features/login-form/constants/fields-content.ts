@@ -1,6 +1,6 @@
-import { EMAIL_PATTERN, FieldErrors } from '@shared/constants';
+import { Input } from 'logger-components';
 
-import { Input } from '@shared/components/input';
+import { EMAIL_PATTERN, FieldErrors } from '@shared/constants';
 
 import { LoginFieldsErrors } from './fields-errors';
 

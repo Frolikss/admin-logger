@@ -1,9 +1,9 @@
 export enum AppRoutes {
-  USERS = '/',
-  REQUESTS = '/requests',
-  REQUEST = '/request',
-  AUTH = '/authentication',
-  USER = '/user',
-  EVENT = '/event',
-  EVENTS = '/events'
+  USERS = '/admin',
+  REQUESTS = '/admin/requests',
+  REQUEST = '/admin/request',
+  AUTH = '/admin/authentication',
+  USER = '/admin/user',
+  EVENT = '/admin/event',
+  EVENTS = '/admin/events'
 }
