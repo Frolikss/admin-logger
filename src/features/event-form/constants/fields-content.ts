@@ -1,8 +1,7 @@
+import { Input } from 'logger-components';
 import moment from 'moment/moment';
 
 import { FieldErrors } from '@shared/constants';
-
-import { Input } from '@shared/components/input';
 
 export enum EventFieldNames {
   BANNER = 'banner',

@@ -29,7 +29,7 @@ export const SideNavMenu: FC<Props> = ({ isMenuOpened }) => {
           key={path}
           to={path}
           className={cn(
-            'hover:bg-blue-800 self-start flex gap-2 self-start overflow-hidden transition-all p-1.5 rounded-full',
+            'hover:bg-blue-800 self-start flex gap-2 self-start overflow-hidden transition-all p-1.5 rounded-lg',
             {
               'bg-blue-800': location.pathname === path
             }

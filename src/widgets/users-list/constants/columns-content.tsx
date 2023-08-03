@@ -21,11 +21,11 @@ export const getColumns = (
         {getAvatar && getAvatar(props.row.index) ? (
           <img
             className="w-8 h-8 rounded-full shrink-0"
-            src={`http://49.12.205.35:9000${getAvatar(props.row.index)}`}
+            src={`http://49.12.205.35:9001${getAvatar(props.row.index)}`}
             alt="avatar"
           />
         ) : (
-          <div className="bg-blue-300 rounded-full w-full text-xs p-[1px] shrink-0 flex items-center justify-center">
+          <div className="bg-primary-300 rounded-full w-full text-xs p-[1px] shrink-0 flex items-center justify-center">
             {props.getValue().charAt(0)}
           </div>
         )}
@@ -63,7 +63,7 @@ export const getColumns = (
       <div className="flex gap-2 justify-center items-center">
         <Link
           to={`${AppRoutes.USER}/?id=${handleUpdateClick(props.row.index)}`}
-          className="p-2 hover:bg-gray-200 transition-all rounded-full">
+          className="p-2 hover:bg-utility-200 transition-all rounded-full">
           <EditIcon className="fill-green w-5" />
         </Link>
       </div>

@@ -1,12 +1,11 @@
 import cn from 'classnames';
+import { Button, ButtonVariants, Input } from 'logger-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
 import { StatusNames } from '@shared/constants';
 
-import { Button, ButtonVariants } from '@shared/components/button';
 import { ImageLabel } from '@shared/components/image-label';
-import { Input } from '@shared/components/input';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
 import { selectSelectedUser } from '@features/login-form';
@@ -78,13 +77,13 @@ export const UserForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 bg-white flex flex-col gap-2 rounded-md shadow-sm flex-0 basis-2/3">
+      className="p-4 bg-white flex w-2/5 flex-col gap-2 rounded-md shadow-sm flex-0">
       {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
         <div key={name} className="flex flex-col gap-1">
           <label
             htmlFor={name}
             className={cn('flex items-baseline gap-2', {
-              'relative self-center flex group w-32 h-32 rounded-full overflow-hidden bg-gray-500':
+              'relative self-center cursor-pointer flex border-1 group w-32 h-32 rounded-full overflow-hidden bg-utility-500':
                 isAvatar(name)
             })}>
             {label}
@@ -93,13 +92,16 @@ export const UserForm = () => {
               image={image}
               selectedItem={selectedUser?.avatar}
             />
-            <span className="text-red-600 text-xs"> {errors[name]?.message}</span>
+            <span className="text-secondary-600 pl-2 text-xs"> {errors[name]?.message}</span>
           </label>
           <Input
             id={name}
             {...register(name, options)}
             {...props}
-            className={cn({ 'border-red-600': errors[name], hidden: isAvatar(name) })}></Input>
+            className={cn({
+              'border-secondary-600': errors[name],
+              hidden: isAvatar(name)
+            })}></Input>
         </div>
       ))}
       <Button className="flex-1 w-full mt-2">
@@ -109,7 +111,7 @@ export const UserForm = () => {
         <Button
           variant={ButtonVariants.SECONDARY}
           onClick={onSuspendClick}
-          className="flex-1 border-red-600 w-full mt-2">
+          className="flex-1 border-secondary-600 w-full mt-2">
           {userIsActive ? 'Suspend' : 'Activate'}
         </Button>
       )}

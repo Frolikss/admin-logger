@@ -15,7 +15,7 @@ export const DashboardWrapper: FC<Props> = ({ children, linkPath }) => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   return (
-    <div className="flex text-gray-800">
+    <div className="flex text-utility-800">
       <SideNavMenu isMenuOpened={isMenuOpened} />
       <div className="flex flex-col flex-1 min-h-screen">
         <Header setIsMenuOpened={setIsMenuOpened} path={linkPath} />

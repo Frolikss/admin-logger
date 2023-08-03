@@ -19,7 +19,7 @@ export const Authentication = () => {
   }, [isAuthorized]);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-gray-100">
+    <div className="w-screen h-screen flex items-center justify-center bg-utility-100">
       <AuthModal />
     </div>
   );

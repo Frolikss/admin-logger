@@ -11,9 +11,11 @@ class DashboardAuthApi {
 
   getEvents(payload: QueryParams, config?: AxiosRequestConfig) {
     return dashboardApiClient.get(
-      `${this.url}/?limit=10&offset=${payload.offset}&search=${payload.search ?? ''}&name=${
-        payload.name ?? ''
-      }&startDate=${payload.startDate ?? ''}&endDate=${payload.endDate ?? ''}`,
+      `${this.url}/?limit=${payload.limit ?? ''}&offset=${payload.offset}&search=${
+        payload.search ?? ''
+      }&name=${payload.name ?? ''}&startDate=${payload.startDate ?? ''}&endDate=${
+        payload.endDate ?? ''
+      }`,
       config
     );
   }

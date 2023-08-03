@@ -13,10 +13,10 @@ export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
   return (
     <img
       src={
-        !uploadImageSrc ? `${process.env.REACT_APP_USERS_IMAGES}${fetchImageSrc}` : uploadImageSrc
+        !uploadImageSrc ? `${process.env.REACT_APP_ADMIN_IMAGES}${fetchImageSrc}` : uploadImageSrc
       }
       alt="img"
-      className="text-center object-contain mx-auto"
+      className="object-contain self-center z-30"
     />
   );
 };

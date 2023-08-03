@@ -1,8 +1,7 @@
+import { Button, Input } from 'logger-components';
 import { Fragment } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from '@shared/components/button';
-import { Input } from '@shared/components/input';
 import { useAppDispatch } from '@shared/lib';
 
 import { sendLoginAsync } from '@features/login-form/model/auth/actions';
@@ -34,7 +33,7 @@ export const LoginForm = () => {
               {...props}
               className="flex-1 p-2 border-2 rounded-md"
             />
-            <p className="text-red-600">{errors[name]?.message}</p>
+            <p className="text-secondary-600">{errors[name]?.message}</p>
           </Fragment>
         );
       })}

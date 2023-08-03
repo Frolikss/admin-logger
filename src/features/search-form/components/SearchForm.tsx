@@ -1,9 +1,8 @@
 import cn from 'classnames';
+import { Button, Input } from 'logger-components';
 import { FC, Fragment } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from '@shared/components/button';
-import { Input } from '@shared/components/input';
 import { useAppDispatch } from '@shared/lib';
 
 import { SEARCH_FIELDS_CONTENT } from '@features/search-form/constants/fields-content';
@@ -41,7 +40,7 @@ export const SearchForm: FC<Props> = ({ searchIsOpened, onCloseModal }) => {
           <Fragment key={name}>
             <label htmlFor={name}>{label}</label>
             <Input {...register(name, options)} {...props} />
-            <p className="text-red-600">{errors[name]?.message}</p>
+            <p className="text-secondary-600">{errors[name]?.message}</p>
           </Fragment>
         ))}
         <Button className="overflow-hidden">Submit</Button>
