@@ -94,8 +94,8 @@ export const UserForm = () => {
           className={cn('flex flex-1 flex-col basis-1/3 gap-1', { 'basis-full': isAvatar(name) })}>
           <label
             htmlFor={name}
-            className={cn('flex items-baseline gap-2', {
-              'relative self-center cursor-pointer flex border-1 group w-32 h-32 rounded-full overflow-hidden bg-utility-500':
+            className={cn('flex items-baseline', {
+              'relative self-center cursor-pointer flex items-center justify-center border-1 group w-32 h-32 rounded-full overflow-hidden bg-utility-500':
                 isAvatar(name)
             })}>
             {label}
