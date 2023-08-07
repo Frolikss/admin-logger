@@ -35,7 +35,7 @@ module.exports = {
       gridTemplateRows: {
         0: '0fr',
         auto: '1fr',
-        nav: 'auto auto auto 1fr'
+        nav: 'auto auto auto auto 1fr'
       }
     }
   },
