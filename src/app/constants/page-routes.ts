@@ -1,6 +1,13 @@
 import { AppRoutes } from '@shared/constants';
 
-import { EditEvent, EditRequest, EditUser, Events, Requests, Users } from '@pages';
+import { Authentication, EditEvent, EditRequest, EditUser, Events, Requests, Users } from '@pages';
+
+export const UNPROTECTED_ROUTES = [
+  {
+    path: AppRoutes.AUTH,
+    element: Authentication
+  }
+];
 
 export const PROTECTED_ROUTES = [
   {
