@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import { FC, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 
 import { ReactComponent as LoadingIcon } from '@svg/loading.svg';
 
@@ -10,8 +9,6 @@ interface Props {
 }
 
 export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
-  const [searchParams] = useSearchParams();
-
   const [isLoading, setIsLoading] = useState(false);
 
   const onFinishLoading = () => {
@@ -24,7 +21,6 @@ export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
     }
   }, [fetchImageSrc, uploadImageSrc]);
 
-  if (!searchParams.has('id') && !uploadImageSrc) return null;
   return (
     <>
       {isLoading && (
