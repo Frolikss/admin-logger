@@ -1,15 +1,12 @@
-import { Button } from 'logger-components';
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { AppRoutes } from '@shared/constants';
 
 import { ReactComponent as AddIcon } from '@svg/add.svg';
-import { ReactComponent as MenuIcon } from '@svg/menu.svg';
 
 interface Props {
   path?: AppRoutes;
-  setIsMenuOpened: Dispatch<SetStateAction<boolean>>;
 }
 
 const HEADERS: Record<string, string> = {
@@ -18,15 +15,12 @@ const HEADERS: Record<string, string> = {
   [AppRoutes.EVENTS]: 'Events'
 };
 
-export const Header: FC<Props> = ({ path, setIsMenuOpened }) => {
+export const Header: FC<Props> = ({ path }) => {
   const { pathname } = useLocation();
-  const onMenuClick = () => setIsMenuOpened((prev) => !prev);
 
   return (
     <header className="header flex items-center justify-between p-2">
-      <Button onClick={onMenuClick} className="border-none">
-        <MenuIcon className="w-5" />
-      </Button>
+      <span />
       {HEADERS[pathname] && <h2 className="text-xl 2xl:text-2xl">{HEADERS[pathname]}</h2>}
       <div className="flex items-center justify-center gap-2">
         {path && (
