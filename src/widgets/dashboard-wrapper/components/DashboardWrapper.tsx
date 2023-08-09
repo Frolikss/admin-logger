@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { AppRoutes } from '@shared/constants';
 
@@ -12,13 +12,11 @@ interface Props {
 }
 
 export const DashboardWrapper: FC<Props> = ({ children, linkPath }) => {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
-
   return (
     <div className="flex text-utility-800">
-      <SideNavMenu isMenuOpened={isMenuOpened} />
+      <SideNavMenu />
       <div className="flex flex-col flex-1 min-h-screen">
-        <Header setIsMenuOpened={setIsMenuOpened} path={linkPath} />
+        <Header path={linkPath} />
         <div className="bg-stone-100 h-full w-full p-4 overflow-auto">{children}</div>
       </div>
     </div>

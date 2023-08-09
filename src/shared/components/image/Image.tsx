@@ -31,7 +31,7 @@ export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
           !uploadImageSrc ? `${process.env.REACT_APP_ADMIN_IMAGES}${fetchImageSrc}` : uploadImageSrc
         }
         alt="img"
-        className={cn('object-contain self-center z-30', { hidden: isLoading })}
+        className={cn('object-scale-down w-full h-full self-center z-30', { hidden: isLoading })}
         onLoad={onFinishLoading}
       />
     </>

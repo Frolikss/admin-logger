@@ -80,7 +80,7 @@ export const ImageField: FC<Props> = ({
               uploadImageSrc={searchParams.has('id') ? undefined : imageSrc}
               fetchImageSrc={selectedItem}
             />
-            <AddIcon className="w-12 h-12 absolute duration-700 translate-y-full group-hover:translate-y-0 transition-all pointer-events-none m-auto left-0 right-0 top-0 bottom-0 z-40 opacity-0 group-hover:opacity-100" />
+            <AddIcon className="w-12 h-12 p-2 bg-white rounded-full backdrop-blur-lg shadow-md absolute duration-700 translate-y-full group-hover:translate-y-0 transition-all pointer-events-none m-auto left-0 right-0 top-0 bottom-0 z-40 opacity-0 group-hover:opacity-100" />
           </>
         )}
       </label>
