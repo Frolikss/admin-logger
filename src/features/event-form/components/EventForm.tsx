@@ -110,7 +110,7 @@ export const EventForm: FC<Props> = ({ selectedEvent }) => {
   }, []);
 
   return (
-    <div className="p-4 bg-white rounded-md shadow-sm w-2/3">
+    <div className="p-4 bg-white rounded-md shadow-sm">
       <ImageField
         existingFormData={formData}
         selectedItem={selectedEvent?.banner}
