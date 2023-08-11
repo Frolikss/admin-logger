@@ -63,9 +63,9 @@ export const UserForm = () => {
   };
 
   const onSubmit: SubmitHandler<UserFieldValues> = (data) => {
-    const avatar = data.avatar[0];
+    const avatar = data.avatar;
 
-    if (avatar && avatar?.type !== 'image/png' && avatar?.type !== 'image/jpeg') {
+    if (avatar && avatar[0].type !== 'image/png' && avatar[0].type !== 'image/jpeg') {
       setError('avatar', {
         type: 'filetype',
         message: 'Only PNGs and JPEGs are valid.'
