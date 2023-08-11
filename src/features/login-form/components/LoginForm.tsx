@@ -1,6 +1,9 @@
 import { Button, Input } from 'logger-components';
 import { Fragment } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import { AppRoutes } from '@shared/constants';
 
 import { useAppDispatch } from '@shared/lib';
 
@@ -10,6 +13,8 @@ import { LOGIN_FIELDS_CONTENT } from '../constants/fields-content';
 import { LoginFieldValues } from '../types/fields.interfaces';
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
 
   const {
@@ -19,7 +24,8 @@ export const LoginForm = () => {
   } = useForm<LoginFieldValues>();
 
   const onSubmit: SubmitHandler<LoginFieldValues> = async (data) => {
-    dispatch(sendLoginAsync(data));
+    await dispatch(sendLoginAsync(data));
+    navigate(AppRoutes.USERS);
   };
 
   return (

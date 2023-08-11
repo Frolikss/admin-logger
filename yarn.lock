@@ -6900,10 +6900,10 @@ lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-logger-components@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/logger-components/-/logger-components-1.0.14.tgz#1392cd63d7510efef04ac82ffe7fb76c6ef41f2e"
-  integrity sha512-s3XtRQ6uCyIirbzCvV1yBHaOenczPesSGhCFqA4HTUiwJpOniNKg6gscaaLr0Q6ixVQ4Yyb1s+Kzwg1jYGb1Iw==
+logger-components@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/logger-components/-/logger-components-1.0.19.tgz#ff9f0ccae4f5de0e91d679431fb67b6753ce3431"
+  integrity sha512-h8+eh2QzCoUvY4f9tKDKScDSo7LTq4atSANOjb9e0GHKwc7JI/qqRDi4/jvDgEXAVl/Y3kWFmXqyX0GCq2xSTQ==
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"

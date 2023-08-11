@@ -1,7 +1,7 @@
 import { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 
-import { TokenNames } from '../constants';
+import { ToastIds, TokenNames } from '../constants';
 
 export const responseConfig = (response: AxiosResponse) => {
   if (response.data?.accessToken) {
@@ -16,6 +16,6 @@ export const responseErrorHandling = (error: AxiosError) => {
     localStorage.removeItem(TokenNames.ACCESS_TOKEN);
     return Promise.reject('Please log in first');
   }
-  toast.error(error.response?.statusText);
+  toast.error(error.response?.statusText, { toastId: ToastIds.ALL });
   return Promise.reject(error.response?.statusText);
 };

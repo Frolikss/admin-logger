@@ -5,6 +5,7 @@ import { AppRoutes, TokenNames } from '@shared/constants';
 
 export const ProtectedRoute = () => {
   const token = localStorage.getItem(TokenNames.ACCESS_TOKEN);
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
 

@@ -5,11 +5,6 @@ import { UserFieldsNames } from './fields-names';
 
 export const USER_FIELDS_CONTENT = [
   {
-    name: UserFieldsNames.AVATAR,
-    accept: 'image/png, image/jpeg',
-    type: 'file'
-  },
-  {
     name: UserFieldsNames.EMAIL,
     placeholder: 'Enter your email',
     label: 'Email',

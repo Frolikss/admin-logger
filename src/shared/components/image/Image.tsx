@@ -1,14 +1,14 @@
 import cn from 'classnames';
-import { FC, useEffect, useState } from 'react';
+import { FC, ImgHTMLAttributes, useEffect, useState } from 'react';
 
 import { ReactComponent as LoadingIcon } from '@svg/loading.svg';
 
-interface Props {
+interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   fetchImageSrc?: string;
   uploadImageSrc?: string;
 }
 
-export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
+export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc, ...props }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onFinishLoading = () => {
@@ -33,6 +33,7 @@ export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc }) => {
         alt="img"
         className={cn('object-scale-down w-full h-full self-center z-30', { hidden: isLoading })}
         onLoad={onFinishLoading}
+        {...props}
       />
     </>
   );
