@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { Button, ButtonVariants } from 'logger-components';
 import { FC, useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
@@ -27,13 +28,14 @@ export const ImageField: FC<Props> = ({
 }) => {
   const { register, watch, handleSubmit } = useForm<FieldValues>();
 
+  const formData = existingFormData ?? new FormData();
+
   const [searchParams] = useSearchParams();
 
   const image: FileList = watch(fieldContent.name);
   const [imageSrc] = useFilePreview(image);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const formData = existingFormData ?? new FormData();
     const entityId = searchParams.get('id');
 
     formData.append(fieldContent.name, data[fieldContent.name][0] ?? false);
@@ -48,13 +50,26 @@ export const ImageField: FC<Props> = ({
     formData.delete('id');
   };
 
+  const onDeleteImageClick = () => {
+    if (formData.has(fieldContent.name)) {
+      formData.set(fieldContent.name, '');
+    } else {
+      formData.append(fieldContent.name, '');
+    }
+
+    if (searchParams.has('id')) {
+      formData.append('id', searchParams.get('id') ?? '');
+      submitCallback(formData);
+    }
+  };
+
   useEffect(() => {
     const subscription = watch(() => handleSubmit(onSubmit)());
     return () => subscription.unsubscribe();
   }, [handleSubmit, watch]);
 
   return (
-    <form className="flex items-center justify-center mb-2">
+    <form className="flex relative items-center justify-center mb-2">
       <label className="relative self-center cursor-pointer flex border-1 group w-32 h-32 rounded-full overflow-hidden bg-utility-500">
         <Input
           {...register(fieldContent.name, {
@@ -80,10 +95,19 @@ export const ImageField: FC<Props> = ({
               uploadImageSrc={searchParams.has('id') ? undefined : imageSrc}
               fetchImageSrc={selectedItem}
             />
-            <AddIcon className="w-12 h-12 p-2 bg-white rounded-full backdrop-blur-lg shadow-md absolute duration-700 translate-y-full group-hover:translate-y-0 transition-all pointer-events-none m-auto left-0 right-0 top-0 bottom-0 z-40 opacity-0 group-hover:opacity-100" />
+            <AddIcon className="w-12 h-12 p-2 bg-white rounded-full shadow-md absolute duration-700 translate-y-10 group-hover:translate-y-0 transition-all pointer-events-none m-auto left-0 right-0 top-0 bottom-0 z-40 opacity-0 group-hover:opacity-100" />
           </>
         )}
       </label>
+      {selectedItem && (
+        <Button
+          variant={ButtonVariants.UTILITY}
+          className="!rounded-full flex-0 hover:bg-secondary-300 absolute top-0 left-[55%] z-50"
+          onClick={onDeleteImageClick}
+          type="button">
+          <AddIcon className="w-4 h-4 rotate-45" />
+        </Button>
+      )}
     </form>
   );
 };

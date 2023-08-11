@@ -98,6 +98,11 @@ export const UserForm = () => {
 
   return (
     <div className="p-4 bg-white rounded-md shadow-sm w-2/3">
+      {isLoading && (
+        <div className="w-full h-full bg-white/60 z-50 absolute top-0 left-0 flex items-center justify-center">
+          <LoadingIcon />
+        </div>
+      )}
       <ImageField
         submitCallback={submitCallback}
         existingFormData={formData}
@@ -107,11 +112,6 @@ export const UserForm = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="relative flex flex-wrap justify-center gap-2 flex-0">
-        {isLoading && (
-          <div className="w-full h-full bg-white/60 z-50 absolute top-0 left-0 flex items-center justify-center">
-            <LoadingIcon />
-          </div>
-        )}
         {USER_FIELDS_CONTENT.map(({ name, options, label, ...props }) => (
           <div key={name} className="flex flex-1 flex-col basis-1/3 gap-1">
             {label && (
