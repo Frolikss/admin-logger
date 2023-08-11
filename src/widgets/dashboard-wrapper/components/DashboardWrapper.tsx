@@ -1,23 +1,23 @@
+import cn from 'classnames';
 import { FC, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
-import { AppRoutes } from '@shared/constants';
-
-import { SideNavMenu } from '@features/side-nav-menu';
+import { SideNavMenuWrapper } from '@features/side-nav-menu';
+import { MENU_CONTENT } from '@features/side-nav-menu/constants/menu-content';
 
 import { Header } from '@widgets/header';
 
 interface Props {
-  linkPath?: AppRoutes;
   children: ReactNode;
 }
 
-export const DashboardWrapper: FC<Props> = ({ children, linkPath }) => {
+export const DashboardWrapper: FC<Props> = ({ children }) => {
   return (
-    <div className="flex text-utility-800">
-      <SideNavMenu />
+    <div className="flex">
+      <SideNavMenuWrapper />
       <div className="flex flex-col flex-1 min-h-screen">
-        <Header path={linkPath} />
-        <div className="bg-stone-100 h-full w-full p-4 overflow-auto">{children}</div>
+        <Header />
+        <div className="bg-stone-100 flex-1 p-4">{children}</div>
       </div>
     </div>
   );

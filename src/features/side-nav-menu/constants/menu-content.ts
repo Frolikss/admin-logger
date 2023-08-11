@@ -1,25 +1,19 @@
 import { AppRoutes } from '@shared/constants';
 
-import { ReactComponent as CalendarIcon } from '@svg/calendar.svg';
-import { ReactComponent as EventsIcon } from '@svg/events.svg';
-import { ReactComponent as DashboardIcon } from '@svg/users.svg';
+import { ReactComponent as DashboardIcon } from '@svg/dashboard.svg';
+import { ReactComponent as UserIcon } from '@svg/user.svg';
 
 import { MenuItem } from '../types/menu.interfaces';
 
 export const MENU_CONTENT: MenuItem[] = [
   {
-    path: AppRoutes.USERS,
+    path: AppRoutes.DASHBOARD,
     icon: DashboardIcon,
-    text: 'Users'
+    text: 'Dashboard'
   },
   {
-    path: AppRoutes.REQUESTS,
-    icon: CalendarIcon,
-    text: 'Requests'
-  },
-  {
-    path: AppRoutes.EVENTS,
-    icon: EventsIcon,
-    text: 'Events'
+    path: AppRoutes.USER,
+    icon: UserIcon,
+    text: 'User'
   }
 ];
