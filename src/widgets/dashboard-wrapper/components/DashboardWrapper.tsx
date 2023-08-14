@@ -11,6 +11,14 @@ interface Props {
   children: ReactNode;
 }
 
+// const MenuItems = [
+//   {
+//     path: AppRoutes.USERS,
+//     icon: UsersIcon,
+//     text: 'Users'
+//   }
+// ];
+
 export const DashboardWrapper: FC<Props> = ({ children }) => {
   return (
     <div className="flex">

@@ -13,12 +13,6 @@ export enum EventFieldNames {
 
 export const EVENT_FIELDS_CONTENT = [
   {
-    name: EventFieldNames.BANNER,
-    component: Input,
-    accept: 'image/png, image/jpeg',
-    type: 'file'
-  },
-  {
     name: EventFieldNames.NAME,
     component: Input,
     label: 'Event name',
