@@ -1,1 +1,1 @@
-export { SideNavMenu } from './components/SideNavMenu';
+export { SideNavMenuWrapper } from './components/SideNavMenuWrapper';

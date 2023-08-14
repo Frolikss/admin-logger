@@ -44,7 +44,7 @@ export const App = () => {
             key={path}
             path={path}
             element={
-              <DashboardWrapper linkPath={linkPath}>
+              <DashboardWrapper>
                 <Element />
               </DashboardWrapper>
             }
