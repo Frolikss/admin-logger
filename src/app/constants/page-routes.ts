@@ -12,8 +12,7 @@ export const UNPROTECTED_ROUTES = [
 export const PROTECTED_ROUTES = [
   {
     path: AppRoutes.USERS,
-    element: Users,
-    linkPath: AppRoutes.USER
+    element: Users
   },
   {
     path: AppRoutes.USER,
@@ -29,8 +28,7 @@ export const PROTECTED_ROUTES = [
   },
   {
     path: AppRoutes.EVENTS,
-    element: Events,
-    linkPath: AppRoutes.EVENT
+    element: Events
   },
   {
     path: AppRoutes.EVENT,

@@ -1,23 +1,12 @@
-import cn from 'classnames';
 import { FC, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 
 import { SideNavMenuWrapper } from '@features/side-nav-menu';
-import { MENU_CONTENT } from '@features/side-nav-menu/constants/menu-content';
 
 import { Header } from '@widgets/header';
 
 interface Props {
   children: ReactNode;
 }
-
-// const MenuItems = [
-//   {
-//     path: AppRoutes.USERS,
-//     icon: UsersIcon,
-//     text: 'Users'
-//   }
-// ];
 
 export const DashboardWrapper: FC<Props> = ({ children }) => {
   return (

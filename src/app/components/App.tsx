@@ -39,7 +39,7 @@ export const App = () => {
         <Route key={path} path={path} element={<Element />} />
       ))}
       <Route element={<ProtectedRoute />}>
-        {PROTECTED_ROUTES.map(({ path, element: Element, linkPath }) => (
+        {PROTECTED_ROUTES.map(({ path, element: Element }) => (
           <Route
             key={path}
             path={path}
