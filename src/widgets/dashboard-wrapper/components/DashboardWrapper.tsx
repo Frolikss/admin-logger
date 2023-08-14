@@ -2,12 +2,15 @@ import cn from 'classnames';
 import { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
+import { AppRoutes } from '@shared/constants';
+
 import { SideNavMenuWrapper } from '@features/side-nav-menu';
 import { MENU_CONTENT } from '@features/side-nav-menu/constants/menu-content';
 
 import { Header } from '@widgets/header';
 
 interface Props {
+  linkPath?: AppRoutes;
   children: ReactNode;
 }
 
