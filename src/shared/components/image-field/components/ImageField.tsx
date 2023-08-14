@@ -11,7 +11,8 @@ import { Input } from '@shared/components/input';
 import { useFilePreview } from '@shared/lib';
 
 import { ReactComponent as AvatarIcon } from '@svg/add-image.svg';
-import { ReactComponent as AddIcon } from '@svg/add.svg';
+import { ReactComponent as DeleteIcon } from '@svg/add.svg';
+import { ReactComponent as AddIcon } from '@svg/upload.svg';
 
 interface Props {
   selectedItem?: string;
@@ -105,7 +106,7 @@ export const ImageField: FC<Props> = ({
           className="!rounded-full flex-0 hover:bg-secondary-300 absolute top-0 left-[55%] z-50"
           onClick={onDeleteImageClick}
           type="button">
-          <AddIcon className="w-4 h-4 rotate-45" />
+          <DeleteIcon className="w-4 h-4 rotate-45" />
         </Button>
       )}
     </form>
