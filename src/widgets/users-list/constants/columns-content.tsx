@@ -20,8 +20,8 @@ export const getColumns = (
       <div className="flex gap-2 w-8 h-8">
         {getAvatar && getAvatar(props.row.index) ? (
           <img
-            className="w-8 h-8 rounded-full shrink-0"
-            src={`http://49.12.205.35:9001${getAvatar(props.row.index)}`}
+            className="w-8 h-8 rounded-full shrink-0 object-cover"
+            src={`${process.env.REACT_APP_ADMIN_IMAGES}${getAvatar(props.row.index)}`}
             alt="avatar"
           />
         ) : (
