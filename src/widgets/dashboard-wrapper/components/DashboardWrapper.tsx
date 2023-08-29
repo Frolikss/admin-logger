@@ -14,7 +14,7 @@ export const DashboardWrapper: FC<Props> = ({ children }) => {
       <SideNavMenuWrapper />
       <div className="flex flex-col flex-1 basis-3/4 min-h-screen">
         <Header />
-        <div className="bg-stone-100 flex-1 p-4">{children}</div>
+        <div className="bg-background flex-1 p-4">{children}</div>
       </div>
     </div>
   );
