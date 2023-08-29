@@ -1,0 +1,67 @@
+.rbc-btn-group {
+    @apply !flex !gap-2;
+}
+
+.rbc-btn-group > *{
+    @apply !rounded-full !bg-dim !shadow-none !border-none;
+}
+
+.rbc-active {
+    @apply !bg-primary-text !text-white;
+}
+
+.rbc-header {
+    @apply !bg-dim-blue !p-2 !font-light !border-none !flex !items-center !justify-center;
+}
+
+.rbc-month-view {
+    @apply !border-0 !rounded-2xl;
+}
+
+.rbc-header .rbc-today {
+    @apply !bg-primary-text !text-white;
+}
+
+.rbc-time-content, .rbc-time-header-gutter {
+    @apply !hidden;
+}
+
+.rbc-time-header {
+    @apply h-full;
+}
+
+.rbc-toolbar {
+    @apply gap-8;
+}
+
+.rbc-toolbar > *:last-child button:nth-last-child(-n + 2) {
+    @apply !hidden;
+}
+
+.rbc-toolbar .rbc-btn-group {
+    @apply order-2;
+}
+
+.rbc-toolbar > *:nth-child(2) {
+    @apply order-1;
+}
+
+.rbc-toolbar-label {
+    @apply !text-left text-lg font-medium;
+}
+
+.rbc-btn-group > * {
+    @apply hover:!bg-primary-text hover:!text-white !transition-all;
+}
+
+.rbc-day-bg, .rbc-date-cell > .rbc-button-link {
+    @apply pointer-events-none;
+}
+
+.rbc-today {
+    @apply !rounded-none;
+}
+
+.rbc-today > * {
+    @apply !bg-white !p-1.5 !rounded-full !shadow-button;
+}

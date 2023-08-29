@@ -10,13 +10,15 @@ import { useAppDispatch, useAppSelector } from '@shared/lib';
 import { getRequestsAsync } from '@widgets/requests-calendar/model/requests/actions';
 import { selectRequests } from '@widgets/requests-calendar/model/requests/selectors';
 
+import '../calendar.css';
+
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
 const STATUS_STYLES: Record<string, string> = {
-  approved: '#16a34a',
-  declined: '#dc2626',
-  on_review: '#eab308'
+  approved: '#4EA67D',
+  declined: '#E06C50',
+  on_review: '#FCD777'
 };
 
 export const RequestsCalendar = () => {

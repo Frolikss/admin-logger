@@ -1,8 +1,7 @@
+import { Button, ButtonVariants } from 'logger-components';
 import Pagination from 'rc-pagination';
 import { FC, ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-import { Button, ButtonVariants } from '@shared/components/button';
 
 import { ReactComponent as ArrowIcon } from '@svg/arrow.svg';
 
