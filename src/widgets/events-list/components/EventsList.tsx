@@ -49,6 +49,7 @@ export const EventsList = () => {
         endDate: searchParams.get('endDate') ?? ''
       })
     );
+
     if (!searchParams.has('id')) {
       dispatch(unsetSelectedEvent());
     }

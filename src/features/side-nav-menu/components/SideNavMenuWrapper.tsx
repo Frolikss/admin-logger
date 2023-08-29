@@ -8,20 +8,23 @@ import { MENU_CONTENT } from '../constants/menu-content';
 export const SideNavMenuWrapper: FC = () => {
   return (
     <SideNavMenu>
-      {MENU_CONTENT.map(({ path, icon: Icon, text }) => (
-        <Link
-          key={path}
-          to={path}
-          className={cn(
-            'hover:bg-blue-600 self-start flex gap-2 self-start overflow-hidden transition-all p-1.5 rounded-lg',
-            {
-              'bg-amber-600': location.pathname === path
-            }
-          )}>
-          <Icon className={cn('fill-white transition-all w-6 shrink-0')} />
-          <span className="text-white overflow-hidden">{text}</span>
-        </Link>
-      ))}
+      <div className="mt-12 flex flex-col gap-2">
+        <h4 className="text-blue-light text-xs ml-2 uppercase">Main menu</h4>
+        {MENU_CONTENT.map(({ path, icon: Icon, text }) => (
+          <Link
+            key={path}
+            to={path}
+            className={cn(
+              'hover:bg-blue-600 opacity-70 hover:opacity-100 flex gap-2 transition-all p-3 rounded-lg',
+              {
+                'bg-primary-dim !opacity-100': location.pathname === path
+              }
+            )}>
+            <Icon className={cn('fill-white transition-all w-6 shrink-0')} />
+            <span className="text-white">{text}</span>
+          </Link>
+        ))}
+      </div>
     </SideNavMenu>
   );
 };

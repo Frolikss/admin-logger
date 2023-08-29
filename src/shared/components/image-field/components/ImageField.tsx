@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Button, ButtonVariants } from 'logger-components';
+import { Button, ButtonVariants, Input } from 'logger-components';
 import { FC, useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { useSearchParams } from 'react-router-dom';
 import { FieldContent } from '@shared/types';
 
 import { Image } from '@shared/components/image';
-import { Input } from '@shared/components/input';
 import { useFilePreview } from '@shared/lib';
 
 import { ReactComponent as AvatarIcon } from '@svg/add-image.svg';

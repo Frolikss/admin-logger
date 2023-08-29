@@ -21,7 +21,9 @@ export const Header: FC<Props> = ({ path }) => {
   return (
     <header className="header flex items-center justify-between p-2">
       <span />
-      {HEADERS[pathname] && <h2 className="text-xl 2xl:text-2xl">{HEADERS[pathname]}</h2>}
+      {HEADERS[pathname] && (
+        <h2 className="text-2xl font-bold text-primary-text 2xl:text-xl">{HEADERS[pathname]}</h2>
+      )}
       <div className="flex items-center justify-center gap-2">
         {path && (
           <Link to={path} className="p-2 rounded-md transition-all hover:bg-utility-200">
