@@ -1,10 +1,10 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { Table } from 'logger-components';
 import { useEffect } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
 import { ListPagination } from '@shared/components/list-pagination';
-import { DashboardTable } from '@shared/components/table';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
 
 import { TableSearchForm } from '@features/table-search-form';
@@ -49,9 +49,9 @@ export const UsersList = () => {
 
   if (!usersData?.users) return <p>No users</p>;
   return (
-    <div className="flex flex-col items-center bg-white p-2 shadow-md rounded-md">
+    <div className="flex flex-col items-center bg-white p-2 rounded-md">
       <TableSearchForm fields={USERS_SEARCH_CONTENT} onSubmit={onSubmit} />
-      <DashboardTable table={table} />
+      <Table table={table} />
       <ListPagination count={usersData.count} />
     </div>
   );

@@ -20,6 +20,7 @@ export const getColumns = () => [
   }),
   columnHelper.accessor('creators', {
     header: 'Creators',
-    cell: (props) => props.getValue().map((user) => `${user.firstName.charAt(0)}.${user.lastName}`)
+    cell: (props) =>
+      props.getValue().map((user) => `${user.firstName.charAt(0) ?? ''}.${user.lastName ?? ''}`)
   })
 ];

@@ -71,7 +71,7 @@ export const RequestsCalendar = () => {
   }, [requestsData?.requests]);
 
   return (
-    <div className="bg-white p-4 rounded-md">
+    <div className="bg-white p-4 rounded-md shadow-dashboard">
       <Calendar
         eventPropGetter={eventPropGetter}
         onSelectEvent={onRequestClick}

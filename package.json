@@ -35,7 +35,7 @@
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "html-to-draftjs": "^1.5.0",
-    "logger-components": "^1.0.70",
+    "logger-components": "^1.0.74",
     "moment": "^2.29.4",
     "rc-pagination": "^3.5.0",
     "react": "^18.2.0",
