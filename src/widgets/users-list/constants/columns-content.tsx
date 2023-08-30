@@ -26,7 +26,7 @@ export const getColumns = (
           />
         ) : (
           <div className="bg-primary-300 rounded-full w-full text-xs p-[1px] shrink-0 flex items-center justify-center">
-            {props.getValue().charAt(0)}
+            {props.getValue() && props.getValue().charAt(0)}
           </div>
         )}
         <span className="flex items-center">{props.getValue()}</span>
