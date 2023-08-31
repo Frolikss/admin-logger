@@ -102,7 +102,7 @@ export const ImageField: FC<Props> = ({
       {selectedItem && (
         <Button
           variant={ButtonVariants.UTILITY}
-          className="!rounded-full flex-0 hover:bg-secondary-300 absolute top-0 left-[55%] z-50"
+          className="!rounded-full bg-utility-200 flex-0 hover:bg-secondary-300 absolute top-0 left-[55%] z-50"
           onClick={onDeleteImageClick}
           type="button">
           <DeleteIcon className="w-4 h-4 rotate-45" />

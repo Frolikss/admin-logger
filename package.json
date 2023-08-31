@@ -29,13 +29,12 @@
     ]
   },
   "dependencies": {
-    "@tanstack/react-table": "^8.9.3",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "html-to-draftjs": "^1.5.0",
-    "logger-components": "^1.0.74",
+    "logger-components": "^1.1.9",
     "moment": "^2.29.4",
     "rc-pagination": "^3.5.0",
     "react": "^18.2.0",

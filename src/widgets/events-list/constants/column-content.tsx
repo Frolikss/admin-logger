@@ -1,26 +1,29 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnItem } from 'logger-components';
 import moment from 'moment';
+
+import { Image } from '@shared/components/image';
 
 import { EventItem } from '@widgets/events-list/types/events.interfaces';
 
-const columnHelper = createColumnHelper<EventItem>();
-
-export const getColumns = () => [
-  columnHelper.accessor('name', {
-    header: 'Name',
-    cell: (info) => info.getValue()
-  }),
-  columnHelper.accessor('startDate', {
+export const getColumns = (): ColumnItem<EventItem>[] => [
+  { id: '1', accessor: 'name', header: 'Name', cell: (item) => `${item}` },
+  {
+    id: '2',
+    accessor: 'startDate',
     header: 'Start',
-    cell: (props) => moment(props.getValue()).format('DD.MM.yyyy')
-  }),
-  columnHelper.accessor('endDate', {
+    cell: (item) => moment(`${item}`).format('DD.MM.yyyy')
+  },
+  {
+    id: '3',
+    accessor: 'endDate',
     header: 'End',
-    cell: (props) => moment(props.getValue()).format('DD.MM.yyyy')
-  }),
-  columnHelper.accessor('creators', {
-    header: 'Creators',
-    cell: (props) =>
-      props.getValue().map((user) => `${user.firstName.charAt(0) ?? ''}.${user.lastName ?? ''}`)
-  })
+    cell: (item) => moment(`${item}`).format('DD.MM.yyyy')
+  },
+  {
+    id: '4',
+    accessor: 'description',
+    header: 'Description',
+    cell: (item) =>
+      item && item !== 'undefined' ? <span dangerouslySetInnerHTML={{ __html: `${item}` }} /> : ''
+  }
 ];

@@ -18,7 +18,7 @@ export interface UserData {
   users: User[];
 }
 
-interface Balance {
+export interface Balance {
   [key: string]: number;
   overtime: number;
   sick_leave: number;

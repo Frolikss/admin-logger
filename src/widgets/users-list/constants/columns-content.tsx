@@ -1,72 +1,54 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnItem } from 'logger-components';
 import moment from 'moment/moment';
-import { Link } from 'react-router-dom';
 
-import { AppRoutes } from '@shared/constants';
+import { Balance, User } from '@shared/types';
 
-import { User } from '@shared/types';
+import { Image } from '@shared/components/image';
 
-import { ReactComponent as EditIcon } from '@svg/edit.svg';
-
-const columnHelper = createColumnHelper<User>();
-
-export const getColumns = (
-  handleUpdateClick: (index: number) => string,
-  getAvatar?: (index: number) => string
-) => [
-  columnHelper.accessor('firstName', {
+export const getColumns = (): ColumnItem<User>[] => [
+  {
+    id: '1',
+    accessor: 'avatar',
+    header: 'Avatar',
+    cell: (item) =>
+      item ? (
+        <Image className="w-8 h-8 rounded-full shrink-0 object-cover" fetchImageSrc={`${item}`} />
+      ) : (
+        <span className="bg-primary-300 flex rounded-full w-8 h-8 text-xs p-[1px] shrink-0 flex items-center justify-center">
+          A
+        </span>
+      )
+  },
+  {
+    id: '2',
+    accessor: 'firstName',
     header: 'First Name',
-    cell: (props) => (
-      <div className="flex gap-2 w-8 h-8">
-        {getAvatar && getAvatar(props.row.index) ? (
-          <img
-            className="w-8 h-8 rounded-full shrink-0 object-cover"
-            src={`${process.env.REACT_APP_ADMIN_IMAGES}${getAvatar(props.row.index)}`}
-            alt="avatar"
-          />
-        ) : (
-          <div className="bg-primary-300 rounded-full w-full text-xs p-[1px] shrink-0 flex items-center justify-center">
-            {props.getValue() && props.getValue().charAt(0)}
-          </div>
-        )}
-        <span className="flex items-center">{props.getValue()}</span>
-      </div>
-    )
-  }),
-  columnHelper.accessor('lastName', {
-    header: 'Last Name',
-    cell: (info) => info.getValue()
-  }),
-  columnHelper.accessor('email', {
-    header: 'Email',
-    cell: (info) => info.getValue()
-  }),
-  columnHelper.accessor('balance.vacation', {
+    cell: (item) => `${item}`
+  },
+  { id: '3', accessor: 'lastName', header: 'Last Name', cell: (item) => `${item}` },
+  { id: '4', accessor: 'email', header: 'Email', cell: (item) => `${item}` },
+  {
+    id: '5',
+    accessor: 'balance',
     header: 'Vacation',
-    cell: (info) => info.getValue()
-  }),
-  columnHelper.accessor('balance.sick_leave', {
+    cell: (item) => `${(item as Balance).vacation}`
+  },
+  {
+    id: '6',
+    accessor: 'balance',
     header: 'Sick leave',
-    cell: (info) => info.getValue()
-  }),
-  columnHelper.accessor('balance.overtime', {
+    cell: (item) => `${(item as Balance).sick_leave}`
+  },
+  {
+    id: '7',
+    accessor: 'balance',
     header: 'Overtime',
-    cell: (info) => info.getValue()
-  }),
-  columnHelper.accessor('birthday', {
+    cell: (item) => `${(item as Balance).overtime}`
+  },
+  {
+    id: '8',
+    accessor: 'birthday',
     header: 'Birthday',
-    cell: (props) => moment(props.getValue()).format('DD.MM.yyyy')
-  }),
-  columnHelper.accessor('balance', {
-    header: 'Edit',
-    cell: (props) => (
-      <div className="flex gap-2 justify-center items-center">
-        <Link
-          to={`${AppRoutes.USER}/?id=${handleUpdateClick(props.row.index)}`}
-          className="p-2 hover:bg-utility-200 transition-all rounded-full">
-          <EditIcon className="fill-green w-5" />
-        </Link>
-      </div>
-    )
-  })
+    cell: (item) => moment(`${item}`).format('DD.MM.yyyy')
+  }
 ];

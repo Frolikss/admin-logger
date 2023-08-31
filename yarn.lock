@@ -2071,18 +2071,6 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tanstack/react-table@^8.9.3":
-  version "8.9.3"
-  resolved "https://registry.npmjs.org/@tanstack/react-table/-/react-table-8.9.3.tgz"
-  integrity sha512-Ng9rdm3JPoSCi6cVZvANsYnF+UoGVRxflMb270tVj0+LjeT/ZtZ9ckxF6oLPLcKesza6VKBqtdF9mQ+vaz24Aw==
-  dependencies:
-    "@tanstack/table-core" "8.9.3"
-
-"@tanstack/table-core@8.9.3":
-  version "8.9.3"
-  resolved "https://registry.npmjs.org/@tanstack/table-core/-/table-core-8.9.3.tgz"
-  integrity sha512-NpHZBoHTfqyJk0m/s/+CSuAiwtebhYK90mDuf5eylTvgViNOujiaOaxNDxJkQQAsVvHWZftUGAx1EfO1rkKtLg==
-
 "@testing-library/dom@^8.5.0":
   version "8.20.1"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.20.1.tgz"
@@ -6905,10 +6893,10 @@ lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-logger-components@^1.0.74:
-  version "1.0.74"
-  resolved "https://registry.yarnpkg.com/logger-components/-/logger-components-1.0.74.tgz#f0661d8297d410bbc9d2e677e1a0d9dafe06c267"
-  integrity sha512-Q9ohRUiWt61HxsYCSf7MfLutEShE4efacJSIlLNTwPpqxK4wG3lF4XNhukoG6r+LcrE9diKeUVqB2opRe8XT6w==
+logger-components@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/logger-components/-/logger-components-1.1.9.tgz#c081b7fb4f8e1d82b99d8d604360fa3d97beba37"
+  integrity sha512-265y9uNME8N+569YcUW1jqFpGPOiCLLHNVAMyYhuSZ1stDgQonefpSwDsupEYu59TTtUZRMQDNR49tpxBW0trg==
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"

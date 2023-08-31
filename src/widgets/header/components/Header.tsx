@@ -12,7 +12,9 @@ interface Props {
 const HEADERS: Record<string, string> = {
   [AppRoutes.USERS]: 'Users',
   [AppRoutes.REQUESTS]: 'Requests',
-  [AppRoutes.EVENTS]: 'Events'
+  [AppRoutes.EVENTS]: 'Events',
+  [AppRoutes.USER]: 'Edit User',
+  [AppRoutes.EVENT]: 'Edit Event'
 };
 
 export const Header: FC<Props> = ({ path }) => {

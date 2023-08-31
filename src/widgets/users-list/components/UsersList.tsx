@@ -1,8 +1,9 @@
-import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { Table } from 'logger-components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FieldValues } from 'react-hook-form';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
+import { AppRoutes } from '@shared/constants';
 
 import { ListPagination } from '@shared/components/list-pagination';
 import { useAppDispatch, useAppSelector } from '@shared/lib';
@@ -15,27 +16,25 @@ import { USERS_SEARCH_CONTENT } from '@widgets/users-list/constants/field-conten
 import { getColumns } from '../constants/columns-content';
 
 export const UsersList = () => {
-  const [_, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedUserId, setSelectedUserId] = useState(-1);
 
   const dispatch = useAppDispatch();
   const usersData = useAppSelector(selectUsers);
 
-  const [searchParams] = useSearchParams();
-
-  const table = useReactTable({
-    data: usersData?.users ?? [],
-    columns: getColumns(
-      (index) => usersData?.users[index].id ?? '',
-      (index) => usersData?.users[index].avatar ?? ''
-    ),
-    getCoreRowModel: getCoreRowModel()
-  });
+  const navigate = useNavigate();
 
   const onSubmit = (data: FieldValues) => setSearchParams({ search: data.search });
 
   useEffect(() => {
     setSearchParams();
   }, []);
+
+  useEffect(() => {
+    if (selectedUserId >= 0) {
+      navigate(`${AppRoutes.USER}/?id=${usersData?.users[selectedUserId].id}`);
+    }
+  }, [selectedUserId]);
 
   useEffect(() => {
     dispatch(
@@ -51,7 +50,7 @@ export const UsersList = () => {
   return (
     <div className="flex flex-col items-center bg-white p-2 rounded-md">
       <TableSearchForm fields={USERS_SEARCH_CONTENT} onSubmit={onSubmit} />
-      <Table table={table} />
+      <Table data={usersData?.users} columns={getColumns()} setSelectedRow={setSelectedUserId} />
       <ListPagination count={usersData.count} />
     </div>
   );

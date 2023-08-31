@@ -8,7 +8,7 @@ interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   uploadImageSrc?: string;
 }
 
-export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc, ...props }) => {
+export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc, className, ...props }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onFinishLoading = () => {
@@ -31,7 +31,9 @@ export const Image: FC<Props> = ({ uploadImageSrc, fetchImageSrc, ...props }) =>
           !uploadImageSrc ? `${process.env.REACT_APP_ADMIN_IMAGES}${fetchImageSrc}` : uploadImageSrc
         }
         alt="img"
-        className={cn('object-scale-down w-full h-full self-center z-30', { hidden: isLoading })}
+        className={cn(className, 'object-scale-down w-full h-full self-center z-30', {
+          hidden: isLoading
+        })}
         onLoad={onFinishLoading}
         {...props}
       />

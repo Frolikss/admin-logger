@@ -27,7 +27,7 @@ export const WysiwygEditor: FC<Props> = ({ field: { value, onChange } }) => {
 
   useEffect(() => {
     if (!updated) {
-      const defaultValue = value ? value : '';
+      const defaultValue = value && value !== 'undefined' ? value : '';
       const blocksFromHtml = htmlToDraft(defaultValue);
       const contentState = ContentState.createFromBlockArray(
         blocksFromHtml.contentBlocks,
