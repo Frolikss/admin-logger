@@ -1,8 +1,6 @@
 import { ColumnItem } from 'logger-components';
 import moment from 'moment';
 
-import { Image } from '@shared/components/image';
-
 import { EventItem } from '@widgets/events-list/types/events.interfaces';
 
 export const getColumns = (): ColumnItem<EventItem>[] => [
