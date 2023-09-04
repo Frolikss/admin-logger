@@ -12,9 +12,12 @@ export const getColumns = (): ColumnItem<User>[] => [
     header: 'Avatar',
     cell: (item) =>
       item ? (
-        <Image className="w-8 h-8 rounded-full shrink-0 object-cover" fetchImageSrc={`${item}`} />
+        <Image
+          className="!w-8 !h-8 rounded-full shrink-0 !object-cover"
+          fetchImageSrc={`${item}`}
+        />
       ) : (
-        <span className="bg-primary-300 flex rounded-full w-8 h-8 text-xs p-[1px] shrink-0 flex items-center justify-center">
+        <span className="bg-primary-300 flex rounded-full w-8 h-8 text-xs p-px shrink-0 flex items-center justify-center">
           A
         </span>
       )
